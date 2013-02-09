@@ -1,0 +1,56 @@
+div.par_img
+{
+  width: 200px;
+  float: left;
+  margin:0 25px 0 0;
+}
+div.impar_img
+{
+  width: 200px;
+  float: right;
+  margin:0 0 0 25px;
+}
+div.par_img img
+{
+  width: 200px;
+  float: left;
+}
+div.impar_img img
+{
+  width: 200px;
+  float: right;
+}
+
+
+
+
+div.par_text
+{
+  text-align: left;
+}
+div.impar_text
+{
+  text-align: right;
+}
+.tabs.vertical
+{
+	border:0;
+}
+.tabs.vertical dd, .tabs.vertical li
+{
+	border-bottom: 2px solid #666;
+	margin:0 0 40px 0;
+	width:100%;
+	height:auto;
+	float:left;
+	display: block;
+}
+
+
+
+.ui-header .ui-title{
+	font-family: 'Eater', cursive;
+	color:#FFFFFF;
+}
+
+

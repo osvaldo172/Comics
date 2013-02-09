@@ -1,0 +1,26 @@
+#index{ /* para id es con # y para clases es con punto (.) */
+	/*text-align:center;
+	vertical-align: middle;
+	margin-top:15%;*/
+	
+	width:190px;
+	margin-left: -95px;
+	margin-top: -125px;
+	height: 250px;
+	left: 50%;
+	top: 50%;
+	display:block;
+	position: absolute;
+}
+
+#header img{
+	display:block;
+	margin: 0 auto;
+
+}
+
+
+.button{
+	cursor: pointer;
+
+}
