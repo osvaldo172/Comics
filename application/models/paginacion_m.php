@@ -7,6 +7,14 @@
 			$this->load->database();
 		
 		}
+		
+		function prueba ($per_page, $aux){
+			
+			$this->db->select('nombre, descripcion, imagen, precio, cantidad');
+			$this->db->order_by("fecha", "desc");
+			$data = $this->db-> get_where('comics', array('editorial_ideditorial' => 1), $per_page, $aux);
+			return $data->result_array();
+		}
 			
 		function obtenLComics($limit, $start){
 

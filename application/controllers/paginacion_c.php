@@ -10,33 +10,25 @@ class Paginacion_c extends CI_Controller {
     }
 
     public function index() {
-    	$lEditoriales=$this->Comics_m->obtenLEditoriales();
-		$lMarvel=$this->Comics_m->obtenLMarvel();
-		$lDC=$this->Comics_m->obtenLDC();
-		$total=$this->Comics_m->obtenTotal();
-		//$lBlog=$this->Comics_m->obtenerLBlog();
-		$config['base_url'] = base_url()."/Comic/index.php/comics_c";
-		//$config['uri_segment'] = '2';
-		//$config['base_url'] ='http://localhost/Comic/index.php/comics_c/';
-		$config['total_rows'] = $total;
-		$config['per_page'] = '1';
-		$this->pagination->initialize($config);
-		$paginacion = $this->pagination->create_links();
-		
-		$datos=Array(
-				'lEditoriales' => $lEditoriales,
-				'lMarvel' => $lMarvel,
-				'lDC' => $lDC,
-				'paginacion' => $paginacion
-				//'lBlog' => $lBlog
-
-		 );
-		$config['base_url'] = 'http://localhost/Comic/index.php/paginacion_c';
+    	$this->load->library('pagination');
+		$this->load->library('table');
+		//Configuramos los datos de la paginacion
+		$config['base_url'] = base_url().'index.php/paginacion_c/index';
 		$config['total_rows'] = $this->Paginacion_m->obtenTotalDeRows();
-		$config['per_page'] = '2';
+		$config['per_page']   = 2;
+		$aux2=$config['per_page'];
+		$aux=$this->uri->segment(3);
+		//$aux=3;
+		//printf($aux);
+		// $config['num_links']   = 1;
+		//iniciamos la paginacion
+		//print_r($config['per_page']);
 		$this->pagination->initialize($config);
-		echo $this->pagination->create_links();
-		$this->load->view("comics_v");
+		//Cargamos los datos para la tabla OJO! acá va el limit
+		$data["records"] = $this->Paginacion_m->prueba($aux2, $aux);
+		//Cargamos la vista
+		//print_r($data);
+		$this->load->view("paginacion_v", $data);
 		
         // $config = array();
         // $config["base_url"] = base_url().'index.php/paginacion_c/';

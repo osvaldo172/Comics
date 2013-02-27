@@ -17,26 +17,26 @@ class Comics_c extends CI_Controller {
 		$lDC=$this->Comics_m->obtenLDC();
 		$total=$this->Comics_m->obtenTotal();
 		//$lBlog=$this->Comics_m->obtenerLBlog();
-		$config['base_url'] = base_url()."/Comic/index.php/comics_c";
+		$config['base_url'] = base_url().'index.php/comics_c/index';
 		//$config['uri_segment'] = '2';
 		//$config['base_url'] ='http://localhost/Comic/index.php/comics_c/';
 		$config['total_rows'] = $total;
 		$config['per_page'] = '1';
 		$this->pagination->initialize($config);
-		$paginacion = $this->pagination->create_links();
+		//$paginacion = $this->pagination->create_links();
 		
 		$datos=Array(
 				'lEditoriales' => $lEditoriales,
 				'lMarvel' => $lMarvel,
 				'lDC' => $lDC,
-				'paginacion' => $paginacion
+				'records' => $this->db->get('comics',$config['per_page'],$this->uri->segment(3))
 				//'lBlog' => $lBlog
 
 		 );
 		 
 		 
-
-		$this->load->view('comics_v', $datos);	
+		print_r($datos);
+		//$this->load->view('comics_v', $datos);	
 
 	}	
 }	

@@ -81,14 +81,14 @@
 										<?php $i++; } ?>		
 									
 									<?php }	?>
+									<?php echo $this->pagination->create_links(); ?>
 								</dl>		
-								<?php echo $paginacion; ?>
 			            	</li>
 	
 								
 	
 			            	<li id="DCTab">
-			            	
+			            		
 								<dl class="vertical tabs twelve">
 									
 									<?php $i=0;
@@ -124,8 +124,10 @@
 										<?php $i++; } ?>		
 										
 									<?php }	?>	
+									<?php echo $this->pagination->create_links(); ?>
 								</dl>		
 			            	</li>
+			            </ul>	
 			            		
 			            	<!--<li id="CSHTab">
 								<dl class="vertical tabs twelve">
