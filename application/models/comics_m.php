@@ -32,49 +32,26 @@
 			
 		}
 		
-		function obtenLMarvel(){
-			$this->db->select('nombre, descripcion, imagen, precio, cantidad'); //Haciendo la consulta
-			$this->db->from('comics');
-			$this->db->where('editorial_ideditorial', 1);
-			$this->db->order_by("fecha", "desc");
-
-			$lMarvel=$this->db->get(); //Vaciando el resultado
-			
-			
-			if(($lMarvel->num_rows())>0){ //Verificando si tengo datos a cargar
-				$indice=1;
-				foreach ($lMarvel->result_array() as $value) {
-					$l_Marvel[$indice] = $value; //Guardando mis datos en un arreglo
-					//print_r($l_Marvel[$indice]); prueba para ver si entra a foreach
-					$indice=$indice+1;
-				}
-				return ($l_Marvel); //Regreso información al controlador
-			}else{
-				$mensaje_error="No hay datos que cargar";
-				return ($mensaje_error);
-			}//fin del else
-		}
-
-		function obtenLDC(){
-			$this->db->select('nombre, descripcion, imagen, precio, cantidad'); //Haciendo la consulta
-			$this->db->from('comics');
-			$this->db->where('editorial_ideditorial', 2);
-			$this->db->order_by("fecha", "desc");
-
-			$lDC=$this->db->get(); //Vaciando el resultado
-			
-			if(($lDC->num_rows())>0){ //Verificando si tengo datos a cargar
-				$indice=1;
-				foreach ($lDC->result_array() as $value) {
-					$l_DC[$indice] = $value; //Guardando mis datos en un arreglo
-					$indice=$indice+1;
-				}
-				return ($l_DC); //Regreso información al controlador
-			}else{
-				$mensaje_error="No hay datos que cargar CBS";
-				return ($mensaje_error);
-			}//fin del else
-		}
+		// function obtenLDC(){
+			// $this->db->select('nombre, descripcion, imagen, precio, cantidad'); //Haciendo la consulta
+			// $this->db->from('comics');
+			// $this->db->where('editorial_ideditorial', 2);
+			// $this->db->order_by("fecha", "desc");
+// 
+			// $lDC=$this->db->get(); //Vaciando el resultado
+// 			
+			// if(($lDC->num_rows())>0){ //Verificando si tengo datos a cargar
+				// $indice=1;
+				// foreach ($lDC->result_array() as $value) {
+					// $l_DC[$indice] = $value; //Guardando mis datos en un arreglo
+					// $indice=$indice+1;
+				// }
+				// return ($l_DC); //Regreso información al controlador
+			// }else{
+				// $mensaje_error="No hay datos que cargar CBS";
+				// return ($mensaje_error);
+			// }//fin del else
+		// }
 		
 		
 		function obtenTotal(){
@@ -86,7 +63,22 @@
 							
 			return ($total);
 		}
+		
+		function obtenLMarvel ($per_page, $aux){
+			
+			$this->db->select('nombre, descripcion, imagen, precio, cantidad');
+			$this->db->order_by("fecha", "desc");
+			$data = $this->db-> get_where('comics', array('editorial_ideditorial' => 1), $per_page, $aux);
+			return $data->result_array();
+		}
 
+		function obtenLDC ($per_page, $aux){
+			
+			$this->db->select('nombre, descripcion, imagen, precio, cantidad');
+			$this->db->order_by("fecha", "desc");
+			$data = $this->db-> get_where('comics', array('editorial_ideditorial' => 2), $per_page, $aux);
+			return $data->result_array();
+		}
 		/*function obtenLCSH(){
 			$this->db->select('nombre,idlicenciaturas'); //Haciendo la consulta
 			$this->db->from('licenciaturas');

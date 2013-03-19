@@ -31,11 +31,10 @@
 						<dl class="tabs three-up">
 						
 							<?php foreach ($lEditoriales as $index=>$value) {
-								
-									 if($index==1){?>
-										<dd class='active'><a href='#<?= $value['nombre']; ?>' id=<?= $value['nombre']?>> <?= $value['nombre']; ?> </a></dd>
-									<?php }
-									else{ ?>
+								if($index==1){?>
+									<dd class='active'><a href='#<?= $value['nombre']; ?>' id=<?= $value['nombre']?>> <?= $value['nombre']; ?> </a></dd>
+								<?php }
+								else{ ?>
 									<dd><a href='#<?= $value['nombre']; ?>' id=<?= $value['nombre']?> > <?= $value['nombre'] ?> </a></dd>
 								<?php }
 							}	?>

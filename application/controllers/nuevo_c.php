@@ -38,14 +38,14 @@
 				
 				
 				
-				$datos2['idcomic'] = $_POST['idcomic'];
-				$datos2['nombre'] = $_POST['nombre']; 
-				$datos2['descripcion'] =$_POST['descripcion'];
-				$datos2['fecha'] =$_POST['fecha'];
-				$datos2['cantidad'] =$_POST['cantidad'];
-				$datos2['precio'] =$_POST['precio'];
+				$datos2['idcomic'] = htmlentities($_POST['idcomic']);
+				$datos2['nombre'] = htmlentities($_POST['nombre']); 
+				$datos2['descripcion'] =htmlentities($_POST['descripcion']);
+				$datos2['fecha'] =htmlentities($_POST['fecha']);
+				$datos2['cantidad'] =htmlentities($_POST['cantidad']);
+				$datos2['precio'] =htmlentities($_POST['precio']);
 				$datos2['imagen'] =$_FILES["userfile"]['name'];
-				$datos2['editorial_ideditorial'] = $_POST['editorial_ideditorial'];
+				$datos2['editorial_ideditorial'] = htmlentities($_POST['editorial_ideditorial']);
 				$datos2['edicion_idedicion'] =$_POST['edicion_idedicion'];
 				$registro_exitoso=$this->nuevo_m->inserta_comic($datos2);
 				
@@ -86,29 +86,6 @@
 			}			
 			$datos2['editorial'] = 2;
 			return TRUE;
-		}
-		
-		
-		// function do_upload()
-		// {
-			// $config['upload_path'] ="/static/img/";
-			// $config['allowed_types'] = 'gif|jpg|png';
-			// $config['max_size'] = '100';
-// 			
-			// $this->load->library('upload', $config);
-			// if ( ! $this->upload->do_upload())
-			// {
-				// $error = array('Archivo no valido');
-				// $this->load->view('nuevo_v', $error);
-			// }
-			// else
-			// {
-				// echo "adios mundo cruel";
-				// $data = array('upload_data' => $this->upload->data());
-// 				
-				// echo "Imagen subida";
-				// //$this->load->view('comic_v', $data);
-			// }
-		// }		
+		}	
 	}
 ?>

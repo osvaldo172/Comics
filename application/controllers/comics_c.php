@@ -13,30 +13,32 @@ class Comics_c extends CI_Controller {
 	public function index(){
 		
 		$lEditoriales=$this->Comics_m->obtenLEditoriales();
-		$lMarvel=$this->Comics_m->obtenLMarvel();
-		$lDC=$this->Comics_m->obtenLDC();
+		//$lMarvel=$this->Comics_m->obtenLMarvel();
+		//$lDC=$this->Comics_m->obtenLDC();
 		$total=$this->Comics_m->obtenTotal();
 		//$lBlog=$this->Comics_m->obtenerLBlog();
 		$config['base_url'] = base_url().'index.php/comics_c/index';
 		//$config['uri_segment'] = '2';
 		//$config['base_url'] ='http://localhost/Comic/index.php/comics_c/';
 		$config['total_rows'] = $total;
-		$config['per_page'] = '1';
+		$config['per_page'] = 2;
+		$aux2=$config['per_page'];
+		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);
 		//$paginacion = $this->pagination->create_links();
 		
 		$datos=Array(
 				'lEditoriales' => $lEditoriales,
-				'lMarvel' => $lMarvel,
-				'lDC' => $lDC,
-				'records' => $this->db->get('comics',$config['per_page'],$this->uri->segment(3))
+				//'lMarvel' => $lMarvel,
+				'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
+				'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux)
 				//'lBlog' => $lBlog
 
 		 );
 		 
 		 
-		print_r($datos);
-		//$this->load->view('comics_v', $datos);	
+		//print_r($datos);
+		$this->load->view('comics_v', $datos);	
 
 	}	
 }	
