@@ -19,14 +19,14 @@
    
    <body>
    		<div data-role="header" class="header">
-				<h1>COMICSCRIPT</h1>
-				<div class="row">
-				<form method="POST" action="http://mysevidor/php/buscador.php3"> 
+			<h1>COMICSCRIPT</h1>
+			<div class="row">
+				<form method="POST" action="http://www.google.com.mx"> 
 					<div class="ten columns">
 						<input type="text" name="T1" size="20">
 					</div>
 					<div class="two columns">
-						<input type="submit" value="Buscar" name="buscar">
+							<input type="submit" value="Buscar" name="buscar">
 					</div> 
 				</form>
 			</div>			
@@ -34,7 +34,7 @@
    		<title>Comicscript</title>
    		</br>
    		<div class="row">
-		
+   			
 	   		<div class="twelve columns">
 		   		<div class="continer">
 		   			<div class="menu">
@@ -42,10 +42,10 @@
 							<?php $dir_marvel=base_url().'index.php/marvel_c/index';?>
 							<?php foreach ($lEditoriales as $index=>$value) {
 								if($index==1){?>
-									<dd class='active'><a href='#<?= $value['nombre']; ?>'  onclick='redireccionar2(<?= $value['nombre']?>);' id=<?= $value['nombre']?>> <?= $value['nombre']; ?> </a></dd>
+									<dd><a href='#<?= $value['nombre']; ?>'  onclick='redireccionar2(<?= $value['nombre']?>);' id=<?= $value['nombre']?>> <?= $value['nombre']; ?> </a></dd>
 								<?php }
 								else{ ?>
-									<dd><a href='#<?= $value['nombre']; ?>' onclick='redireccionar(<?= $value['nombre']?>);' id=<?= $value['nombre']?> > <?= $value['nombre'] ?> </a></dd>
+									<dd class='active'><a href='#<?= $value['nombre']; ?>' onclick='redireccionar(<?= $value['nombre']?>);' id=<?= $value['nombre']?> > <?= $value['nombre'] ?> </a></dd>
 								<?php }
 							}	?>
 							<!--<dd><a href='https://www.google.com.mx/' id='Blog' > Blog </a></dd>-->
@@ -53,33 +53,40 @@
 						</dl>
 					</div>
 			
-						<ul class="tabs-content">
-			            	<li class="active" id="MarvelTab">
+					<ul class="tabs-content">
+			           	<li id="MarvelTab">
+							<dl class="vertical tabs twelve">
+								
+							</dl>		
+			           	</li>
+	
+			            	<li  class="active" id="DCTab">
+			            		
 								<dl class="vertical tabs twelve">
 									
 									<?php $i=0;
-									foreach ($lMarvel as $value) {?>
-										<?php
+									foreach ($lDC as $value) {?>
+									<?php
 										$aux=$i%2;
 										if ($aux==0) { ?>
 											<dd id=<?=$value['nombre']?>>
 												<div class="par_img">
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
-													Precio: <?= $value['precio'];?> </br>
-													Comics en existencia: <?= $value['cantidad'];?>
+													Precio: <?= $value['precio'];?></br>
+													Comics en existencia: <?= $value['cantidad'];?> 
 												</div> 
 												<div class="par_text">
 													<h5><?= $value['nombre'];?> </h5> </br> 
-												</div>
 													<?= $value['descripcion'];?>
+												</div>
 											</dd>	
 											
 										<?php $i++; } else { ?>
 											<dd id=<?=$value['nombre']?>>
-												<div class="impar_img"> 
+												<div class="impar_img">
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?></br>
-													Comics en existencia: <?= $value['cantidad'];?>
+													Comics en existencia: <?= $value['cantidad'];?> 
 												</div> 
 												<div class="impar_text">
 													<h5><?= $value['nombre'];?> </h5> </br> 
@@ -88,19 +95,9 @@
 											</dd>	
 											
 										<?php $i++; } ?>		
-									
-									<?php }	?>
+										
+									<?php }	?>	
 									<?php echo $this->pagination->create_links(); ?>
-								</dl>		
-			            	</li>
-	
-								
-	
-			            	<li id="DCTab">
-			            		
-								<dl class="vertical tabs twelve">
-									
-									
 								</dl>	
 			            	</li>
 			            	

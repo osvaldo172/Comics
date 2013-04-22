@@ -13,7 +13,7 @@
 		
 
 		
-		function index()
+		public function buscar()
 		
 		
 		{

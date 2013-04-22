@@ -32,28 +32,6 @@
 			
 		}
 		
-		// function obtenLDC(){
-			// $this->db->select('nombre, descripcion, imagen, precio, cantidad'); //Haciendo la consulta
-			// $this->db->from('comics');
-			// $this->db->where('editorial_ideditorial', 2);
-			// $this->db->order_by("fecha", "desc");
-// 
-			// $lDC=$this->db->get(); //Vaciando el resultado
-// 			
-			// if(($lDC->num_rows())>0){ //Verificando si tengo datos a cargar
-				// $indice=1;
-				// foreach ($lDC->result_array() as $value) {
-					// $l_DC[$indice] = $value; //Guardando mis datos en un arreglo
-					// $indice=$indice+1;
-				// }
-				// return ($l_DC); //Regreso información al controlador
-			// }else{
-				// $mensaje_error="No hay datos que cargar CBS";
-				// return ($mensaje_error);
-			// }//fin del else
-		// }
-		
-		
 		function obtenTotal(){
 			$this->db->select('*'); //Haciendo la consulta
 			$this->db->from('comics');
@@ -79,32 +57,10 @@
 			$data = $this->db-> get_where('comics', array('editorial_ideditorial' => 2), $per_page, $aux);
 			return $data->result_array();
 		}
-		/*function obtenLCSH(){
-			$this->db->select('nombre,idlicenciaturas'); //Haciendo la consulta
-			$this->db->from('licenciaturas');
-			$this->db->where('divisiones_iddivisiones',3);
-
-			$lCSH=$this->db->get(); //Vaciando el resultado
-			
-			if(($lCSH->num_rows())>0){ //Verificando si tengo datos a cargar
-				$indice=1;
-				foreach ($lCSH->result_array() as $value) {
-					$l_CSH[$indice] = $value; //Guardando mis datos en un arreglo
-					$indice=$indice+1;
-				}
-				return ($l_CSH); //Regreso información al controlador
-			}else{
-				$mensaje_error="No hay datos que cargar CSH";
-				return ($mensaje_error);
-			}//fin del else
-		}*/
-	
+		
 				
 	} //Fin de la clase
 
-?>
-
-
-		
+?>	
 
  

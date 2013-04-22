@@ -9,7 +9,7 @@
 	  	<script src="<?=base_url(); ?>static/js/jquery-1.8.2.js"></script>
 	  	<script src="<?=base_url(); ?>static/foundation/javascripts/foundation.min.js"></script>
 	  	<script src="<?=base_url(); ?>static/foundation/javascripts/modernizr.foundation.js"></script>
-	  	
+	  	<!--<link rel="stylesheet" href="<?=base_url();?>/static/CSS/comic.css">-->
 		<script type="text/javascript"> var base='<?= base_url(); ?>' </script>
    </head>
    
