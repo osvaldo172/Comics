@@ -21,21 +21,15 @@
    		<div data-role="header" class="header">
 			<h1>COMICSCRIPT</h1>
 			<div class="row">
-				<!-- <form method="POST" action="http://www.google.com.mx"> 
+				<form method="POST" action="<?=base_url();?>/index.php/dc_c"> 
 					<div class="ten columns">
 						<input type="text" name="T1" size="20">
 					</div>
 					<div class="two columns">
-							<input type="submit" value="Buscar" name="buscar">
+							<input type="submit" value="Buscar" name="buscar" id="buscar">
 					</div> 
-				</form> -->
-				<form action='<?php echo base_url();?>index.php/buscador/busca' method='post' name='process'>
-						<?php if(! is_null($msg)) echo $msg;?>			
-				  		<input type="text" id="cadena_buscar" name="cadena_buscar" />
-				  		
-  						<input type="submit" id="buscador" class="button large offset-by-two" value="Buscar" />
-					</form>
-			</div>			
+				</form>
+			</div>	
 		</div><!--Aquí termina header-->
    		<title>Comicscript</title>
    		</br>
@@ -51,11 +45,10 @@
 									<dd><a href='#<?= $value['nombre']; ?>'  onclick='redireccionar2(<?= $value['nombre']?>);' id=<?= $value['nombre']?>> <?= $value['nombre']; ?> </a></dd>
 								<?php }
 								else{ ?>
-									<dd class='active'><a href='#<?= $value['nombre']; ?>' onclick='redireccionar(<?= $value['nombre']?>);' id=<?= $value['nombre']?> > <?= $value['nombre'] ?> </a></dd>
+									<dd><a href='#<?= $value['nombre']; ?>' onclick='redireccionar(<?= $value['nombre']?>);' id=<?= $value['nombre']?> > <?= $value['nombre'] ?> </a></dd>
 								<?php }
 							}	?>
-							<!--<dd><a href='https://www.google.com.mx/' id='Blog' > Blog </a></dd>-->
-							
+							<dd class='active'><a href='#'  id='Busqueda'> Busqueda</a></dd>
 						</dl>
 					</div>
 			

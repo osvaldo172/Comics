@@ -1,37 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-	
-	class Buscador extends CI_Controller{
-    
-	    function __construct(){
-	        parent::__construct();
-			
-			$this->load->helper(array('html', 'url'));
-	        $this->load->model(array('buscar_m', 'comics_m')); // Load the model
-			
-	   	}
-
-    function index( $msg = NULL ){
- 		$data['msg'] = $msg;
-        $this->load->view('buscador_v', $data);
+class Buscador extends CI_Controller {
+	 
+	function __construct(){
+        parent::__construct();
+        $this->load->helper(array('html', 'url'));
+		$this->load->library('pagination');
+        $this->load->model('Comics_m'); // Load the model
     }
-	
-	
-	 public function busca(){
-  		// $usuario = $this->loguin2_m->
-        $result = $this->buscador_m->busca();// Validate the user can login 
-		if($result[] = NUL){ // Now we verify the result
-           	$msg = '<font color=red>No se encontro ningun resultado relacionado a su busqueda</font><br/>';
-			$this->index($msg);
-			
-        }else{
-        	
-        $lEditoriales=$this->Comics_m->obtenLEditoriales();
+
+
+	public function index(){
+		$datos2['idcomic'] = htmlentities($_POST['idcomic']);
+		$r_busqueda=$this->buscador_m->busca($datos2);
+		$lEditoriales=$this->Comics_m->obtenLEditoriales();
 		//$lMarvel=$this->Comics_m->obtenLMarvel();
 		//$lDC=$this->Comics_m->obtenLDC();
 		$total=$this->Comics_m->obtenTotal();
 		//$lBlog=$this->Comics_m->obtenerLBlog();
-		$config['base_url'] = base_url().'index.php/buscador/busca';
+		$config['base_url'] = base_url().'index.php/dc_c/index';
 		//$config['uri_segment'] = '2';
 		//$config['base_url'] ='http://localhost/Comic/index.php/comics_c/';
 		$config['total_rows'] = $total;
@@ -43,9 +30,9 @@
 		
 		$datos=Array(
 				'lEditoriales' => $lEditoriales,
-				'lMarvel' => $lMarvel,
-				'resultado' => $this->buscador_m->busca($aux2, $aux),
-				
+				//'lMarvel' => $lMarvel,
+				'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
+				'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux)
 				//'lBlog' => $lBlog
 
 		 );
@@ -53,7 +40,6 @@
 		 
 		//print_r($datos);
 		$this->load->view('buscador_v', $datos);	
-        }        
-    } 
-}
-?>
+
+	}	
+}	

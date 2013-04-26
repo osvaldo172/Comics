@@ -10,13 +10,14 @@
 			
 		function busca(){
 			$cadena = $this->security->xss_clean($this->input->post('cadena_buscar'));
-			if($cadena = '' or NUL){
+			if($cadena = '' or NULL){
 				return FALSE;
 			}
 			
 			else {
 				
 			}
+			
 			$this->db->select('nombre, ideditorial'); //Haciendo la consulta
 			$this->db->from('editorial');
 			
