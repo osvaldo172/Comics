@@ -6,40 +6,43 @@ class Buscador extends CI_Controller {
         parent::__construct();
         $this->load->helper(array('html', 'url'));
 		$this->load->library('pagination');
-        $this->load->model('Comics_m'); // Load the model
+        $this->load->model(array('Comics_m', "Buscador_m")); // Load the model
     }
 
 
-	public function index(){
-		$datos2['idcomic'] = htmlentities($_POST['idcomic']);
-		$r_busqueda=$this->buscador_m->busca($datos2);
-		$lEditoriales=$this->Comics_m->obtenLEditoriales();
-		//$lMarvel=$this->Comics_m->obtenLMarvel();
-		//$lDC=$this->Comics_m->obtenLDC();
-		$total=$this->Comics_m->obtenTotal();
-		//$lBlog=$this->Comics_m->obtenerLBlog();
-		$config['base_url'] = base_url().'index.php/dc_c/index';
-		//$config['uri_segment'] = '2';
-		//$config['base_url'] ='http://localhost/Comic/index.php/comics_c/';
-		$config['total_rows'] = $total;
-		$config['per_page'] = 2;
-		$aux2=$config['per_page'];
-		$aux=$this->uri->segment(3);
-		$this->pagination->initialize($config);
-		//$paginacion = $this->pagination->create_links();
-		
+	 
+	  function index( $msg = NULL ){
+	  	//$cadena = $_POST['buscar'];
+	 	//echo "<script languaje='javascript'>alert('esto es el index')</script>";
+	 	$lEditoriales=$this->Comics_m->obtenLEditoriales();
+ 		//$data['msg'] = $msg;
 		$datos=Array(
 				'lEditoriales' => $lEditoriales,
 				//'lMarvel' => $lMarvel,
-				'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
-				'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux)
+				//'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
+				//'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux),
 				//'lBlog' => $lBlog
-
+				'msg' => $msg
 		 );
+		
+		 $this->load->view('buscador_v', $datos);	
 		 
-		 
-		//print_r($datos);
-		$this->load->view('buscador_v', $datos);	
-
-	}	
+	
+    }
+	function mostrar_resultado($cadena){
+		echo $cadena;
+		
+	}
+	 public function busqueda(){
+  		$cadena = $_POST['buscar'];
+		$lEditoriales=$this->Comics_m->obtenLEditoriales();
+		$datos['lEditoriales']=$lEditoriales;
+		$datos['lcadena'] = htmlentities($_POST['buscar']);
+		print_r($datos);
+		echo "<script languaje='javascript'>alert('esto es el index')</script>";
+		$this->load->view('pruebas_v', $datos);	
+		
+		//redirect('buscador/mostrar_resultado/'.$cadena); 
+		//$lEditoriales=$this->Comics_m->obtenLEditoriales();        
+    } 
 }	
