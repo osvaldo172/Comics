@@ -1,5 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+<<<<<<< HEAD
 	
 	class Buscador extends CI_Controller{
     
@@ -14,46 +15,51 @@
     function index( $msg = NULL ){
  		$data['msg'] = $msg;
         $this->load->view('buscador_v', $data);
+=======
+class Buscador extends CI_Controller {
+	 
+	function __construct(){
+        parent::__construct();
+        $this->load->helper(array('html', 'url'));
+		$this->load->library('pagination');
+        $this->load->model(array('Comics_m', "Buscador_m")); // Load the model
+>>>>>>> 850d517b7a026380a1f094a4eea51926c5dd856e
     }
-	
-	
-	 public function busca(){
-  		// $usuario = $this->loguin2_m->
-        $result = $this->buscador_m->busca();// Validate the user can login 
-		if($result[] = NUL){ // Now we verify the result
-           	$msg = '<font color=red>No se encontro ningun resultado relacionado a su busqueda</font><br/>';
-			$this->index($msg);
-			
-        }else{
-        	
-        $lEditoriales=$this->Comics_m->obtenLEditoriales();
-		//$lMarvel=$this->Comics_m->obtenLMarvel();
-		//$lDC=$this->Comics_m->obtenLDC();
-		$total=$this->Comics_m->obtenTotal();
-		//$lBlog=$this->Comics_m->obtenerLBlog();
-		$config['base_url'] = base_url().'index.php/buscador/busca';
-		//$config['uri_segment'] = '2';
-		//$config['base_url'] ='http://localhost/Comic/index.php/comics_c/';
-		$config['total_rows'] = $total;
-		$config['per_page'] = 2;
-		$aux2=$config['per_page'];
-		$aux=$this->uri->segment(3);
-		$this->pagination->initialize($config);
-		//$paginacion = $this->pagination->create_links();
-		
+
+
+	 
+	  function index( $msg = NULL ){
+	  	//$cadena = $_POST['buscar'];
+	 	//echo "<script languaje='javascript'>alert('esto es el index')</script>";
+	 	$lEditoriales=$this->Comics_m->obtenLEditoriales();
+ 		//$data['msg'] = $msg;
 		$datos=Array(
 				'lEditoriales' => $lEditoriales,
-				'lMarvel' => $lMarvel,
-				'resultado' => $this->buscador_m->busca($aux2, $aux),
-				
+				//'lMarvel' => $lMarvel,
+				//'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
+				//'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux),
 				//'lBlog' => $lBlog
-
+				'msg' => $msg
 		 );
+		
+		 $this->load->view('buscador_v', $datos);	
 		 
-		 
-		//print_r($datos);
-		$this->load->view('buscador_v', $datos);	
-        }        
+	
+    }
+	function mostrar_resultado($cadena){
+		echo $cadena;
+		
+	}
+	 public function busqueda(){
+  		$cadena = $_POST['buscar'];
+		$lEditoriales=$this->Comics_m->obtenLEditoriales();
+		$datos['lEditoriales']=$lEditoriales;
+		$datos['lcadena'] = htmlentities($_POST['buscar']);
+		print_r($datos);
+		echo "<script languaje='javascript'>alert('esto es el index')</script>";
+		$this->load->view('pruebas_v', $datos);	
+		
+		//redirect('buscador/mostrar_resultado/'.$cadena); 
+		//$lEditoriales=$this->Comics_m->obtenLEditoriales();        
     } 
-}
-?>
+}	

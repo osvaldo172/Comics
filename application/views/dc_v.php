@@ -18,15 +18,16 @@
    </head>
    
    <body>
+   	
    		<div data-role="header" class="header">
 			<h1>COMICSCRIPT</h1>
 			<div class="row">
-				<form method="POST" action="http://www.google.com.mx"> 
+				<form action='<?php echo base_url();?>index.php/buscador/busqueda' method='post' name='busqueda'>
 					<div class="ten columns">
-						<input type="text" name="T1" size="20">
+						<input type="text" name="buscar" id="buscar" size="20">
 					</div>
 					<div class="two columns">
-							<input type="submit" value="Buscar" name="buscar">
+							<input type="submit" value="Buscar" name="boton_buscar" id="boton_buscar">
 					</div> 
 				</form>
 			</div>			

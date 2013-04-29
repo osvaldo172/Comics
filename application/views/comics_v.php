@@ -21,7 +21,7 @@
    		<div data-role="header" class="header">
 				<h1>COMICSCRIPT</h1>
 				<div class="row">
-				<form method="POST" action="http://mysevidor/php/buscador.php3"> 
+				<form method="POST" action="<?=base_url();?>index.php/buscador/busqueda"> 
 					<div class="ten columns">
 						<input type="text" name="T1" size="20">
 					</div>
