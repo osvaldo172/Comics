@@ -21,16 +21,18 @@
    		<div data-role="header" class="header">
 				<h1>COMICSCRIPT</h1>
 				<div class="row">
-				<form method="POST" action="<?=base_url();?>index.php/buscador/busqueda"> 
+				<form method="post" action="<?=base_url();?>index.php/buscador/busqueda" accept-charset="utf-8"> 
 					<div class="ten columns">
-						<input type="text" name="T1" size="20">
+						<input type="text" name="buscar" id="buscar">
 					</div>
 					<div class="two columns">
-						<input type="submit" value="Buscar" name="buscar">
+						<input type="submit" value="Buscar" name="boton_buscar" id="boton_buscar">
 					</div> 
 				</form>
 			</div>			
 		</div><!--Aquí termina header-->
+		 <div class="color12"> <!--Aquí iran las images-->
+
    		<title>Comicscript</title>
    		</br>
    		<div class="row">
@@ -109,5 +111,6 @@
 				</div>
 			</div>
 		</div>
+		</div><!--Aquí termina donde iran las imageness-->
 	</body>
 </html>

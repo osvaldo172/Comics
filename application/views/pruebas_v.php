@@ -57,7 +57,6 @@
 								<dl class="vertical tabs twelve">
 									
 									<?php
-										echo "hola";
 										echo $lcadena;			
 									?>
 								
