@@ -7,7 +7,7 @@
 	        parent::__construct();
 			
 			$this->load->helper(array('html', 'url'));
-	        $this->load->model(array('buscar_m', 'comics_m')); // Load the model
+	        $this->load->model(array('buscador_m', 'comics_m')); // Load the model
 			
 	   	}
 
