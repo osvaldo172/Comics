@@ -42,4 +42,6 @@ class Comics_c extends CI_Controller {
 		$this->load->view('comics_v', $datos);	
 
 	}	
+	
+	
 }	

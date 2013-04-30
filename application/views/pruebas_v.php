@@ -57,7 +57,8 @@
 								<dl class="vertical tabs twelve">
 									
 									<?php
-										echo $lcadena;			
+										echo $lcadena;
+										print_r($resultado);	
 									?>
 								
 										

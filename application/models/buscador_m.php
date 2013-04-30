@@ -8,46 +8,33 @@
 		
 		}
 			
-		function busca($cadena){
-			
-			
-			if($cadena = '' or NULL){
+	function busca($cadena, $per_page, $aux){
+		$this->db->select('*');
+		//$this->db->from('comics');
+		$this->db->like('nombre', $cadena);
+		// $this->db->select('nombre, ideditorial'); //Haciendo la consulta
+		// $this->db->from('editorial');
 				
-				$resultado['valida']=FALSE;
+		$resultado=$this->db->get('comics', $per_page, $aux); //Vaciando el resultado}{+}}
+		if(($resultado->num_rows())>0){ //Verificando si tengo datos a cargar
+			$indice=1;
+			foreach ($resultado->result_array() as $value) {
 					
-				return ($resultado);
-			}
-			
-			else {
-				$this->db->select('*');
-				$this->db->from('comics');
-				$this->db->like('nombre', $cadena);
-				// $this->db->select('nombre, ideditorial'); //Haciendo la consulta
-				// $this->db->from('editorial');
-				
-				$lEditoriales=$this->db->get(); //Vaciando el resultado}{+}}
-				print_r($lEditoriales);
-				$aEditoriales['valida']=TRUE;
-				if(($lEditoriales->num_rows())>0){ //Verificando si tengo datos a cargar
-					$indice=1;
-					foreach ($lEditoriales->result_array() as $value) {
-					
-						$aEditoriales[$indice] = $value; //Guardando mis datos en un arreglo
-						$indice=$indice+1;
+				$aResultado[$indice] = $value; //Guardando mis datos en un arreglo
+				$indice=$indice+1;
 						
-					}
+			}
 					
-					return ($aEditoriales); //Regreso información al controlador
-				}else{
-					$lEditoriales['validar']=FALSE;
-					
-					return ($lEditoriales);
-				}//fin del else
-				//return ($aEditoriales); //Regreso información al controlador
-			}	
+			return ($aResultado); //Regreso información al controlador
+		}//fin del else
+		else{
+			$mensaje_error="No hay resultados";	
+			return ($mensaje_error);
 		}
+	}	
+		
 				
-	} //Fin de la clase
+}//Fin de la clase
 
 ?>	
 
