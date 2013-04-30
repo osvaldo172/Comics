@@ -9,12 +9,12 @@
 		}
 			
 	function busca($cadena, $per_page, $aux){
-		$this->db->select('*');
+		$this->db->select('nombre, descripcion, imagen, precio, cantidad');
 		//$this->db->from('comics');
 		$this->db->like('nombre', $cadena);
 		// $this->db->select('nombre, ideditorial'); //Haciendo la consulta
 		// $this->db->from('editorial');
-				
+		//$resultado=$this->db->get('comics', $por_pagina, $segmento);		
 		$resultado=$this->db->get('comics', $per_page, $aux); //Vaciando el resultado}{+}}
 		if(($resultado->num_rows())>0){ //Verificando si tengo datos a cargar
 			$indice=1;

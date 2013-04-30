@@ -53,14 +53,13 @@
 					</div>
 			
 						<ul class="tabs-content">
-			            	<li class="active" id="MarvelTab">
+			            	<li id="MarvelTab">
 								<dl class="vertical tabs twelve">
-									
-									<?php
+							<!-- <?php
 										echo $lcadena;
 										print_r($resultado);	
 									?>
-								
+								 -->
 										
 			            	</li>
 	
@@ -72,6 +71,54 @@
 									
 									
 								</dl>	
+			            	</li>
+			            	
+			            	<li class="active" id="BusquedaTab">
+								<dl class="vertical tabs twelve">		
+									
+									<?php $i=0;
+									
+									if ($resultado!="No hay resultados"){
+									foreach ($resultado as $value) {?>
+									<?php
+										$aux=$i%2;
+										if ($aux==0) { ?>
+											<dd id=<?=$value['nombre']?>>
+												<div class="par_img">
+													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
+													Precio: <?= $value['precio'];?></br>
+													Comics en existencia: <?= $value['cantidad'];?> 
+												</div> 
+												<div class="par_text">
+													<h5><?= $value['nombre'];?> </h5> </br> 
+													<?= $value['descripcion'];?>
+												</div>
+											</dd>	
+											
+										<?php $i++; } else { ?>
+											<dd id=<?=$value['nombre']?>>
+												<div class="impar_img">
+													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
+													Precio: <?= $value['precio'];?></br>
+													Comics en existencia: <?= $value['cantidad'];?> 
+												</div> 
+												<div class="impar_text">
+													<h5><?= $value['nombre'];?> </h5> </br> 
+													<?= $value['descripcion'];?>
+												</div>
+											</dd>	
+											
+										<?php $i++; } ?>		
+										
+									<?php }	?>	
+									<?php echo $this->pagination->create_links(); 
+									}else{
+										echo "No hay resultados";
+									}?>
+									
+										
+									
+								</dl>		
 			            	</li>
 			            	
 			            </ul>	
