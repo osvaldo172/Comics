@@ -14,21 +14,31 @@
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
-		
+				
    </head>
    
    <body>
    		<div data-role="header" class="header">
-				<h1>COMICSCRIPT</h1>
-				<div class="row">
-				<form method="post" action="<?=base_url();?>index.php/buscador/busqueda" accept-charset="utf-8"> 
+			<h1>COMICSCRIPT</h1>
+			<div class="row">
+				<span><?php echo validation_errors(); ?></span>
+				<?php echo form_open('buscador/validar')?>
+				    <div class="ten columns">
+				   		<input type="text" name="buscando" id="buscando" />
+				   	</div>
+				    <div class="two columns">
+				    	<input type="submit" value="Buscar" />
+				    </div>
+				    
+			    <?=form_close()?>
+			<!-- <form method="post" action="<?=base_url();?>index.php/buscador/busqueda" accept-charset="utf-8"> 
 					<div class="ten columns">
 						<input type="text" name="buscar" id="buscar">
 					</div>
 					<div class="two columns">
 						<input type="submit" value="Buscar" name="boton_buscar" id="boton_buscar">
 					</div> 
-				</form>
+				</form> -->
 			</div>			
 		</div><!--Aquí termina header-->
 		 <div class="color12"> <!--Aquí iran las images-->

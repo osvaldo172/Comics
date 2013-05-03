@@ -4,7 +4,7 @@ class Comics_c extends CI_Controller {
 	 
 	function __construct(){
         parent::__construct();
-        $this->load->helper(array('html', 'url'));
+        $this->load->helper(array('html', 'url', 'form'));
 		$this->load->library('pagination');
         $this->load->model('Comics_m'); // Load the model
     }

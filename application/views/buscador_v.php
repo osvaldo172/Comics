@@ -21,14 +21,24 @@
    		<div data-role="header" class="header">
 			<h1>COMICSCRIPT</h1>
 			<div class="row">
-				<form  method='post' action="<?=base_url();?>index.php/buscador/busqueda">
+				
+				<?php form_open(base_url().'index.php/buscador/validar')?>
+				    <div class="ten columns">
+				   		<input type="text" name="buscando" id="buscando" />
+				   	</div>
+				    <div class="two columns">
+				    	<input type="submit" value="Buscar" />
+				    </div>
+				    
+			    <?=form_close()?>
+				<!-- <form  method='post' action="<?=base_url();?>index.php/buscador/busqueda">
 					<div class="ten columns">
 						<input type="text" name="buscar" id="buscar" >
 					</div>
 					<div class="two columns">
 						<input type="submit" value="Buscar" name="boton_buscar" id="boton_buscar">
 					</div> 
-				</form>
+				</form> -->
 			</div>	
 		</div><!--Aquí termina header-->
    		<title>Comicscript</title>
