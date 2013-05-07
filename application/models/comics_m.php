@@ -58,7 +58,13 @@
 			return $data->result_array();
 		}
 		
-				
+		function obtenTotalPag($cadena){
+			$this->db->select('nombre, descripcion, imagen, precio, cantidad');
+			$this->db->from('comics');
+			$this->db->like('nombre', $cadena);
+			$total=$this->db->get(); //Vaciando el resultado
+			$total=$total->num_rows();
+		}		
 	} //Fin de la clase
 
 ?>	

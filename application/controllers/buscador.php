@@ -5,29 +5,27 @@
 	    function __construct(){
 	        parent::__construct();
 			
-			$this->load->helper(array('html', 'url', 'form'));
+			$this->load->helper(array('html', 'url'));
 			$this->load->library('pagination');
+			$this->load->library('form_validation');			
 	        $this->load->model(array('Buscador_m', 'Comics_m')); // Load the model
-			
 	   	}
 
-    function index( $msg = NULL ){
-    	//redirect(base_url().'index.php/marvel_c');
-    	$lEditoriales=$this->Comics_m->obtenLEditoriales();
-		$total=$this->Comics_m->obtenTotal();
-		
-		$config['base_url'] = base_url().'index.php/buscador/pagina';
-		$config['total_rows'] = $total;
+    function index($cadena){
+	//redirect(base_url().'index.php/marvel_c');
+		$lEditoriales=$this->Comics_m->obtenLEditoriales();
+		$total=$this->Comics_m->obtenTotalPag($cadena);
+		$config['base_url'] = base_url().'index.php/buscador/index/'.$cadena;
+		$config['total_rows'] = 50;
 		$config['per_page'] = 2;
 		$aux2=$config['per_page'];
 		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);
 		
-		$resultado=$this->Buscador_m->busca($cadena, $aux2, $aux);
+		// $resultado=$this->Buscador_m->busca($cadena, $aux2, $aux);
 		$datos=Array(
 			'lEditoriales' => $lEditoriales,
-			'lcadena' => $cadena,
-			'resultado' => $resultado
+			'resultado' => $this->Buscador_m->busca($cadena, $aux2, $aux)
 			);
 		
 		// $datos['lEditoriales']=$lEditoriales;
@@ -39,20 +37,18 @@
 	public function mostrar($cadena){
 		
 		$lEditoriales=$this->Comics_m->obtenLEditoriales();
-		$total=$this->Comics_m->obtenTotal();
-		
-		$config['base_url'] = base_url().'index.php/buscador/pagina';
-		$config['total_rows'] = $total;
+		$total=$this->Comics_m->obtenTotalPag($cadena);
+		$config['base_url'] = base_url().'index.php/buscador/mostrar/'.$cadena;
+		$config['total_rows'] = 50;
 		$config['per_page'] = 2;
 		$aux2=$config['per_page'];
 		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);
 		
-		$resultado=$this->Buscador_m->busca($cadena, $aux2, $aux);
+		// $resultado=$this->Buscador_m->busca($cadena, $aux2, $aux);
 		$datos=Array(
 			'lEditoriales' => $lEditoriales,
-			'lcadena' => $cadena,
-			'resultado' => $resultado
+			'resultado' => $this->Buscador_m->busca($cadena, $aux2, $aux)
 			);
 		
 		// $datos['lEditoriales']=$lEditoriales;
@@ -66,7 +62,7 @@
 	 	$cadena = htmlentities($_POST['buscar']);
 	 	if(!empty($cadena)/*isset($_POST['buscar'])*/){
 	  		// $cadena = htmlentities($_POST['buscar']);
-	  			redirect(base_url().'index.php/buscador/mostrar/'.$cadena);
+	  			redirect(base_url().'index.php/buscador/index/'.$cadena);
 				// $lEditoriales=$this->Comics_m->obtenLEditoriales();
 				// $resultado=$this->Buscador_m->busca($cadena);
 				// $datos['lEditoriales']=$lEditoriales;
@@ -83,17 +79,22 @@
     } 
 	
 	public function validar() {
-        $this->form_validation->set_rules('buscando', 'buscador', 'required');
-        $this->form_validation->set_message('required', 'El %s no puede ir vacío!');
-        if ($this->form_validation->run() == TRUE) {
- 
+		//redirect(base_url().'index.php/comics_c/');
+		
+        $this->form_validation->set_rules('buscando', 'buscando', 'required');
+		$this->form_validation->set_message('required', 'Campo obligatorio');
+		
+		//redirect(base_url().'index.php/comics_c/');
+		if ($this->form_validation->run() == TRUE) {
+  			
             $buscador = $this->input->post('buscando');
+			 print_r("$buscador");
             $this->session->set_userdata('buscando', $buscador);
             //todo correcto y pasamos a la función index
-            redirect('../buscador', 'refresh');
+           redirect('../buscador', 'refresh');
         } else {
             //mostramos de nuevo el buscador con los errores
-            $this->load->view('buscador_view');
+           redirect(base_url().'index.php/comics_c/');
         }
     }
 	

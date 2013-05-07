@@ -21,8 +21,8 @@
    		<div data-role="header" class="header">
 			<h1>COMICSCRIPT</h1>
 			<div class="row">
-				
-				<?php form_open(base_url().'index.php/buscador/validar')?>
+
+				<?php echo form_open('buscador/validar')?>
 				    <div class="ten columns">
 				   		<input type="text" name="buscando" id="buscando" />
 				   	</div>
