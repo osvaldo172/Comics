@@ -34,7 +34,6 @@
    		<title>Comicscript</title>
    		</br>
    		<div class="row">
-		
 	   		<div class="twelve columns">
 		   		<div class="continer">
 		   			<div class="menu">

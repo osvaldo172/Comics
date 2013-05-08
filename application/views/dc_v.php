@@ -22,7 +22,7 @@
    		<div data-role="header" class="header">
 			<h1>COMICSCRIPT</h1>
 			<div class="row">
-				<form  method='post' action="<?=base_url();?>index.php/buscador/busqueda">
+				<form method="post" action="<?=base_url();?>index.php/buscador/busqueda" accept-charset="utf-8"> 
 					<div class="ten columns">
 						<input type="text" name="buscar" id="buscar">
 					</div>
