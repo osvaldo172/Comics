@@ -10,10 +10,14 @@
 		<script src="<?=base_url(); ?>static/js/jquery-1.8.2.js"></script>
 		<script src="<?=base_url(); ?>static/js/comics.js"></script>
 		<link rel="stylesheet" href="<?=base_url();?>/static/CSS/comic.css">
+		<link rel="stylesheet" href="<?=base_url();?>/static/CSS/modal.css">
+		<link rel="stylesheet" href="<?=base_url();?>/static/CSS/layout.css">
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
+	
+	</script>
 				
    </head>
    
@@ -36,8 +40,10 @@
 
    		<title>Comicscript</title>
    		</br>
+
    		<div class="row">
-		
+   			
+   			
 	   		<div class="twelve columns">
 		   		<div class="continer">
 		   			<div class="menu">
@@ -70,6 +76,13 @@
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?> </br>
 													Comics en existencia: <?= $value['cantidad'];?>
+											       
+											      	<div class="seven columns">
+											       		<div class="panel">
+											       			<a href="#login_form" id="login_pop">Comprar</a>
+											       		</div>
+											      	</div>
+													
 												</div> 
 												<div class="par_text">
 													<h5><?= $value['nombre'];?> </h5> </br> 
@@ -110,6 +123,9 @@
 			            </ul>	
 			            		
 				</div>
+				
+				
+				
 			</div>
 		</div>
 		</div><!--Aquí termina donde iran las imageness-->
