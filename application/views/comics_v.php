@@ -20,7 +20,9 @@
    
    <body>
    		<div class="header">
-			<h3>COMICSCRIPT</h3>
+   			</br>
+			<h4>COMICSCRIPT</h4>
+			</br>
 			<div class="row">
 				<span><?php echo validation_errors(); ?></span>
 				<form method="post" action="<?=base_url();?>index.php/buscador/busqueda" accept-charset="utf-8"> 
@@ -73,8 +75,8 @@
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?> </br>
 													Comics en existencia: <?= $value['cantidad'];?>
-											       	<button id="toggle" class="button">Comprar</button>
-											       	<div class="block"> 
+											       	<button id="toggle_par" class="button">Comprar</button>
+											       	<div class="block_par"> 
 														hola mundo </br>
 														hola mundo </br>
 														hola mundo </br>
@@ -82,11 +84,11 @@
 													</div>	
 											      
 													<script>
-													var $block = $('.block');
-													/* Toggle a sliding animation animation */
-													$('#toggle').on('click', function() {
-													    $block.stop().slideToggle();
-													});
+														var $block1 = $('.block_par');
+														/* Toggle a sliding animation animation */
+														$('#toggle_par').on('click', function() {
+														    $block1.stop().slideToggle();
+														});
 													</script>
 													
 													
@@ -103,7 +105,21 @@
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?></br>
 													Comics en existencia: <?= $value['cantidad'];?>
-													<button id="toggle">Comprar</button>	
+													<button id="toggle_impar" class="button">Comprar</button>
+											       	<div class="block_impar"> 
+														hola mundo </br>
+														hola mundo </br>
+														hola mundo </br>
+														hola mundo </br>
+													</div>	
+											      
+													<script>
+														var $block_impar = $('.block_impar');
+														/* Toggle a sliding animation animation */
+														$('#toggle_impar').on('click', function() {
+														    $block_impar.stop().slideToggle();
+														});
+													</script>	
 												</div> 
 												<div class="impar_text">
 													<h5><?= $value['nombre'];?> </h5> </br> 

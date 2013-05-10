@@ -25,9 +25,13 @@ div.impar_img img
   float: right;
 }
 
-.block 
+.block_impar
 {
+	display: none;
+}
 
+.block_par
+{
 	display: none;
 }
 
@@ -57,7 +61,7 @@ div.impar_text
 
 
 
-.header h3, .header {
+.header h4, .header {
 	margin: 0px;
 	background: #424242;
 	font-family: 'Eater', cursive;
