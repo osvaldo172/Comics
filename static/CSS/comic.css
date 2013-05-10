@@ -1,7 +1,5 @@
 .color12{
-		background-image:url('../img/utopiano7.JPG');
-		background-repeat:repeat-y;
-		background-size:80px 60px;
+		
 	}
 
 div.par_img
@@ -27,6 +25,11 @@ div.impar_img img
   float: right;
 }
 
+.block 
+{
+
+	display: none;
+}
 
 
 
@@ -54,9 +57,17 @@ div.impar_text
 
 
 
-.ui-header .ui-title{
+.header h3, .header {
+	margin: 0px;
+	background: #424242;
 	font-family: 'Eater', cursive;
-	color:#FFFFFF;
+	color:#FFF;
+	text-align:center;
 }
 
+.boton_busca{
+	 
+	text-align:center;
+	color:#333; 
+}
 

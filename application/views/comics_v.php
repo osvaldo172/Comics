@@ -3,34 +3,31 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
+
 		<link rel="stylesheet" href="<?=base_url(); ?>static/foundation/stylesheets/foundation.min.css">
 		<script src="<?=base_url(); ?>static/foundation/javascripts/foundation.min.js"></script>
         <script src="<?=base_url(); ?>static/foundation/javascripts/modernizr.foundation.js"></script>
 		<script src="<?=base_url(); ?>static/foundation/javascripts/marketing_docs.js"></script>
 		<script src="<?=base_url(); ?>static/js/jquery-1.8.2.js"></script>
-		<script src="<?=base_url(); ?>static/js/comics.js"></script>
 		<link rel="stylesheet" href="<?=base_url();?>/static/CSS/comic.css">
-		<link rel="stylesheet" href="<?=base_url();?>/static/CSS/modal.css">
-		<link rel="stylesheet" href="<?=base_url();?>/static/CSS/layout.css">
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
-	
-	</script>
-				
+<!-- 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" /> -->
+<!-- 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>  <!--FRAMEWORK JQUERY LIBRERÍA --> 
+<!-- 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+		<script src="<?=base_url(); ?>static/js/comics.js"></script>
+
    </head>
    
    <body>
-   		<div data-role="header" class="header">
-			<h1>COMICSCRIPT</h1>
+   		<div class="header">
+			<h3>COMICSCRIPT</h3>
 			<div class="row">
 				<span><?php echo validation_errors(); ?></span>
 				<form method="post" action="<?=base_url();?>index.php/buscador/busqueda" accept-charset="utf-8"> 
 					<div class="ten columns">
 						<input type="text" name="buscar" id="buscar">
 					</div>
-					<div class="two columns">
+					<div class="boton_busca">
 						<input type="submit" value="Buscar" name="boton_buscar" id="boton_buscar">
 					</div> 
 				</form>
@@ -76,12 +73,22 @@
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?> </br>
 													Comics en existencia: <?= $value['cantidad'];?>
-											       
-											      	<div class="seven columns">
-											       		<div class="panel">
-											       			<a href="#login_form" id="login_pop">Comprar</a>
-											       		</div>
-											      	</div>
+											       	<button id="toggle" class="button">Comprar</button>
+											       	<div class="block"> 
+														hola mundo </br>
+														hola mundo </br>
+														hola mundo </br>
+														hola mundo </br>
+													</div>	
+											      
+													<script>
+													var $block = $('.block');
+													/* Toggle a sliding animation animation */
+													$('#toggle').on('click', function() {
+													    $block.stop().slideToggle();
+													});
+													</script>
+													
 													
 												</div> 
 												<div class="par_text">
@@ -96,6 +103,7 @@
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?></br>
 													Comics en existencia: <?= $value['cantidad'];?>
+													<button id="toggle">Comprar</button>	
 												</div> 
 												<div class="impar_text">
 													<h5><?= $value['nombre'];?> </h5> </br> 
