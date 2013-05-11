@@ -13,7 +13,7 @@ class Comics_c extends CI_Controller {
 	public function index(){
 		
 		$lEditoriales=$this->Comics_m->obtenLEditoriales();
-		$total=$this->Comics_m->obtenTotal();
+		$total=$this->Comics_m->obtenTotalMarvel();
 		$config['base_url'] = base_url().'index.php/comics_c/index';
 		$config['total_rows'] = $total;
 		$config['per_page'] = 2;
@@ -36,7 +36,7 @@ class Comics_c extends CI_Controller {
 		
 		$this->load->view('comics_v', $datos);	
 
-	}	
+	}
 	
 	
 }	

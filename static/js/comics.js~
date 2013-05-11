@@ -1,7 +1,7 @@
 function redireccionar(e)
 {
 	//var aux;
-	document.location.href = "http://localhost/Comics/index.php/dc_c/";
+	document.location.href = "http://localhost/Comics/index.php/comics_c/pDC";
 	//location.reload(true)
 	//alert(d);
 	//document.location='<?= base_url().'index.php/marvel_c/index'?>#<?= e ?>';

@@ -43,6 +43,7 @@ div.par_text
 }
 div.impar_text
 {
+  margin:0 0 0 1%;
   text-align: right;
 }
 .tabs.vertical
@@ -69,8 +70,9 @@ div.impar_text
 	text-align:center;
 }
 
-.boton_busca{
-	 
+#boton_buscar {
+	width: 120px;
+	height: 30px;
 	text-align:center;
 	color:#333; 
 }

@@ -15,7 +15,7 @@ class Dc_c extends CI_Controller {
 		$lEditoriales=$this->Comics_m->obtenLEditoriales();
 		//$lMarvel=$this->Comics_m->obtenLMarvel();
 		//$lDC=$this->Comics_m->obtenLDC();
-		$total=$this->Comics_m->obtenTotal();
+		$total=$this->Comics_m->obtenTotalDC();
 		//$lBlog=$this->Comics_m->obtenerLBlog();
 		$config['base_url'] = base_url().'index.php/dc_c/index';
 		//$config['uri_segment'] = '2';
@@ -40,5 +40,6 @@ class Dc_c extends CI_Controller {
 		//print_r($datos);
 		$this->load->view('dc_v', $datos);	
 
-	}	
+	}
+
 }	

@@ -32,10 +32,20 @@
 			
 		}
 		
-		function obtenTotal(){
+		function obtenTotalMarvel(){
 			$this->db->select('*'); //Haciendo la consulta
 			$this->db->from('comics');
 			$this->db->where('editorial_ideditorial', 1);
+			$total=$this->db->get(); //Vaciando el resultado
+			$total=$total->num_rows();
+							
+			return ($total);
+		}
+		
+		function obtenTotalDC(){
+			$this->db->select('*'); //Haciendo la consulta
+			$this->db->from('comics');
+			$this->db->where('editorial_ideditorial', 2);
 			$total=$this->db->get(); //Vaciando el resultado
 			$total=$total->num_rows();
 							
