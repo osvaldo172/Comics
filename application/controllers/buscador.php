@@ -69,7 +69,6 @@
 		if ($this->form_validation->run() == TRUE) {
   			
             $buscador = $this->input->post('buscando');
-			 print_r("$buscador");
             $this->session->set_userdata('buscando', $buscador);
             //todo correcto y pasamos a la función index
            redirect('../buscador', 'refresh');

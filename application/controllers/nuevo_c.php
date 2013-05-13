@@ -59,15 +59,14 @@
 					
 					if ( ! $this->upload->do_upload())
 						{
-							echo"no se subio la imagen";
+							echo "<script type=\"text/javascript\">alert(\"Comics cargado incorrectamente\");</script>";  
 							$error = array('error' => $this->upload->display_errors());
-							$this->load->view('nuevo_v', array('error' => ' ' ));
+							redirect(base_url().'index.php/nuevo_c', $error);
+							//$this->load->view('nuevo_v', array('error' => ' ' ));
 						}
 						else
 						{
-							echo "por fin </p>";
-							$data = array('upload_data' => $this->upload->data());
-							$this->load->view('nuevo_v', $data);
+							redirect(base_url().'index.php/nuevo_c');
 						}
 					
 					}

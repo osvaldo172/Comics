@@ -4,7 +4,7 @@ class Comics_c extends CI_Controller {
 	 
 	function __construct(){
         parent::__construct();
-        $this->load->helper(array('html', 'url', 'form'));
+        $this->load->helper(array('html', 'url'));
 		$this->load->library('pagination');
         $this->load->model('Comics_m'); // Load the model
     }
@@ -18,7 +18,7 @@ class Comics_c extends CI_Controller {
 		$config['total_rows'] = $total;
 		$config['per_page'] = 2;
 		$aux2=$config['per_page'];
-		$aux=$this->uri->segment(2);
+		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);
 
 		

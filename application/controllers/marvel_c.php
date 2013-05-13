@@ -13,19 +13,13 @@ class Marvel_c extends CI_Controller {
 	public function index(){
 		
 		$lEditoriales=$this->Comics_m->obtenLEditoriales();
-		//$lMarvel=$this->Comics_m->obtenLMarvel();
-		//$lDC=$this->Comics_m->obtenLDC();
 		$total=$this->Comics_m->obtenTotalMarvel();
-		//$lBlog=$this->Comics_m->obtenerLBlog();
 		$config['base_url'] = base_url().'index.php/marvel_c/index';
-		//$config['uri_segment'] = '2';
-		//$config['base_url'] ='http://localhost/Comic/index.php/comics_c/';
 		$config['total_rows'] = $total;
 		$config['per_page'] = 2;
 		$aux2=$config['per_page'];
 		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);
-		//$paginacion = $this->pagination->create_links();
 		
 		$datos=Array(
 				'lEditoriales' => $lEditoriales,

@@ -93,7 +93,7 @@
 															<div class = "row">
 																<div class="five columns">
 																	<label for="cliente">Ingrese su nombre:</label>
-																	<input type="text" id="cliente" name="cliente" value="<?php echo set_value('cliente'); ?>"/>
+																	<input type="text" id="cliente" name="cliente" required value="<?php echo set_value('cliente'); ?>"/>
 																	<?php echo form_error('cliente'); ?>
 																</div>	
 															</div>
@@ -101,7 +101,7 @@
 															<div class = "row">
 																<div class="five columns">
 																	<label for="correo">Ingrese su correo:</label>
-																	<input type="text" id="correo" name="correo" value="<?php echo set_value('correo'); ?>"/>
+																	<input type="email" id="correo" title="Correo invalido" name="correo" required value="<?php echo set_value('correo'); ?>"/>
 																	<?php echo form_error('correo'); ?>
 																</div>	
 															</div>
@@ -109,7 +109,7 @@
 															<div class = "row">
 																<div class="five columns">
 																	<label for="telefono">Ingrese su telefono:</label>
-																	<input type="text" id="telefono" name="telefono" value="<?php echo set_value('telefono'); ?>"/>
+																	<input type="text" id="telefono"  title="Telefono invalido, ejemplo 55657611 ó 5513815414" pattern="[0-9]{10}" name="telefono" value="<?php echo set_value('telefono'); ?>"/>
 																	<?php echo form_error('telefono'); ?>
 																</div>	
 															</div>		
@@ -209,14 +209,9 @@
 										<?php echo $this->pagination->create_links(); ?>
 									</dl>		
 				            	</li>
-		
-									
-		
+
 				            	<li id="DCTab">
-				            		
-									<dl class="vertical tabs twelve">
-										
-										
+	
 									</dl>	
 				            	</li>
 				            	

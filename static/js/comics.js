@@ -15,3 +15,4 @@ function redireccionar2(e)
 	//alert(d);
 	//document.location='<?= base_url().'index.php/marvel_c/index'?>#<?= e ?>';
 }
+

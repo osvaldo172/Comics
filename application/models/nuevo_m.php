@@ -16,6 +16,7 @@
 				'fecha' => $fecha,
 				'cantidad' => $cantidad,
 				'precio' => $precio,
+				'imagen' => $imagen,
 				'editorial_ideditorial' => $editorial_ideditorial,
 				'edicion_idedicion' => $edicion_idedicion
 				);
