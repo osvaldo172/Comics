@@ -5,7 +5,7 @@ class Comics_c extends CI_Controller {
 	function __construct(){
         parent::__construct();
         $this->load->helper(array('html', 'url'));
-		$this->load->library('pagination');
+		$this->load->library(array('pagination', 'email'));
         $this->load->model('Comics_m'); // Load the model
     }
 
@@ -23,19 +23,35 @@ class Comics_c extends CI_Controller {
 
 		
 		$datos=Array(
-				'lEditoriales' => $lEditoriales,
-				//'lMarvel' => $lMarvel,
-				'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
-				'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux)
-				//'lBlog' => $lBlog
+			'lEditoriales' => $lEditoriales,
+			//'lMarvel' => $lMarvel,
+			'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
+			'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux)
+			//'lBlog' => $lBlog
 
 		 );
-		 
-		 
-		//print_r($datos);
-		
 		$this->load->view('comics_v', $datos);	
 
+	}
+	
+	public function correo(){
+		// bool whether to validate email or not      
+
+        $this->email->initialize($config);
+        
+        $this->email->from('osvaldo172@gmail.com', 'myname');
+        $this->email->to('osvaldo172@gmail.com'); 
+
+        $this->email->subject('Email Test');
+        $this->email->message('Testing the email class.');  
+
+       
+		if($this->email->send()){
+			redirect(base_url().'index.php/nuevo_c');
+		}
+		else {
+			echo $this->email->print_debugger();
+		}
 	}
 	
 	
