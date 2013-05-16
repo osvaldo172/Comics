@@ -121,7 +121,7 @@
 															
 															<div class="ten columns">
 																<label for="direccion">Direccion completa:</label>
-																<textarea name="direccion" id="direccion" rows="8" value="<?php echo set_value('direccion'); ?>" placeholder="Escribir toda su direccion completa calle, colonia, estado, delegacion" size="500"/></textarea>
+																<textarea name="direccion" id="direccion" rows="8" name="direccion" required value="<?php echo set_value('direccion'); ?>" placeholder="Escribir toda su direccion completa calle, colonia, estado, delegacion" size="500"/></textarea>
 															  	<?php echo form_error('direccion'); ?>
 															</div>	
 															
