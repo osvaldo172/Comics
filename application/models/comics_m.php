@@ -54,7 +54,7 @@
 		
 		function obtenLMarvel ($per_page, $aux){
 			
-			$this->db->select('nombre, descripcion, imagen, precio, cantidad');
+			$this->db->select('nombre, descripcion, imagen, precio, cantidad, idcomic');
 			$this->db->order_by("fecha", "desc");
 			$data = $this->db-> get_where('comics', array('editorial_ideditorial' => 1), $per_page, $aux);
 			return $data->result_array();
@@ -62,7 +62,7 @@
 
 		function obtenLDC ($per_page, $aux){
 			
-			$this->db->select('nombre, descripcion, imagen, precio, cantidad');
+			$this->db->select('nombre, descripcion, imagen, precio, cantidad, idcomic');
 			$this->db->order_by("fecha", "desc");
 			$data = $this->db-> get_where('comics', array('editorial_ideditorial' => 2), $per_page, $aux);
 			return $data->result_array();

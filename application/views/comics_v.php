@@ -89,12 +89,15 @@
 													</div>
 	
 											       	<div class="block_par"> 
-											       		<?php 
-											       			$datos_correo['nombre']=$value['nombre'];
-															$datos_correo['precio']=$value['precio'];
-											       		?>
 											       		
-														<form method="post" action="<?=base_url();?>index.php/comics_c/correo/<?php $datos_correo['nombre']."/".$datos_correo['precio']?>" accept-charset="utf-8"> 
+											       		<?php
+
+															$idcomic=$value['idcomic'];
+															$url=base_url()."index.php/comics_c/correo/".$idcomic;
+															print_r($url);
+											       		?>  
+							
+														<form method="post" action="<?= $url ?>" accept-charset="utf-8"> 
 															<div class = "row">
 																<div class="five columns">
 																	<label for="cliente">Ingrese su nombre:</label>
