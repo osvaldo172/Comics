@@ -6,6 +6,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
 
 		<link rel="stylesheet" href="<?=base_url(); ?>static/foundation/stylesheets/foundation.min.css">
+		<script>var base = "<?=base_url(); ?>"</script>
 		<script src="<?=base_url(); ?>static/foundation/javascripts/foundation.min.js"></script>
         <script src="<?=base_url(); ?>static/foundation/javascripts/modernizr.foundation.js"></script>
 		<script src="<?=base_url(); ?>static/foundation/javascripts/marketing_docs.js"></script>

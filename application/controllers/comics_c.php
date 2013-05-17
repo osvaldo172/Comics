@@ -4,12 +4,11 @@ class Comics_c extends CI_Controller {
 	 
 	function __construct(){
         parent::__construct();
-        $this->load->helper(array('html', 'url'));
+        $this->load->helper(array('html', 'url', 'cookie'));
 		$this->load->library(array('pagination', 'email'));
         $this->load->model('Comics_m'); // Load the model
     }
-
-
+	
 	public function index(){
 		
 		$lEditoriales=$this->Comics_m->obtenLEditoriales();
@@ -20,8 +19,7 @@ class Comics_c extends CI_Controller {
 		$aux2=$config['per_page'];
 		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);
-
-		
+	
 		$datos=Array(
 			'lEditoriales' => $lEditoriales,
 			//'lMarvel' => $lMarvel,
@@ -34,25 +32,25 @@ class Comics_c extends CI_Controller {
 
 	}
 	
+	
 	public function correo(){
 		// bool whether to validate email or not      
-
-        $this->email->initialize($config);
-        
+		
+		
+       	$this->email->initialize($config);    
+		
+		$datos['direccion'] = $_POST['direccion'];
         $this->email->from('osvaldo172@gmail.com', 'myname');
         $this->email->to('osvaldo172@gmail.com'); 
+        $this->email->subject('Solicutud de compra de comic');
+		
+        $this->email->message($datos['direccion']);
 
-        $this->email->subject('Email Test');
-        $this->email->message('Testing the email class.');  
-
-       
 		if($this->email->send()){
-			redirect(base_url().'index.php/nuevo_c');
+			//redirect(base_url().'index.php/nuevo_c');
 		}
 		else {
 			echo $this->email->print_debugger();
 		}
 	}
-	
-	
 }	
