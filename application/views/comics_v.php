@@ -85,7 +85,9 @@
 														<div class="par_text">
 															<h5><?= $value['nombre'];?> </h5> </br> 
 														</div>
-															<?= $value['descripcion'];?>	
+														<div class="descripcion">
+															<?= str_replace("\n", "</br>", $value['descripcion']);?>
+														</div>
 													</div>
 	
 											       	<div class="block_par"> 
@@ -123,10 +125,15 @@
 															</div>		
 															
 															<div class="ten columns">
-																<label for="direccion">Direccion completa:</label>
-																<textarea name="direccion" id="direccion" rows="8" value="<?php echo set_value('direccion'); ?>" placeholder="Escribir toda su direccion completa calle, colonia, estado, delegacion" size="500"/></textarea>
-															  	<?php echo form_error('direccion'); ?>
 															</div>	
+															
+															<div class = "row">
+																<div class="ten columns">
+																	<label for="direccion">Direccion completa:</label>
+																	<textarea name="direccion" id="direccion" rows="8" value="<?php echo set_value('direccion'); ?>" placeholder="Escribir toda su direccion completa calle, colonia, estado, delegacion" size="500"/></textarea>
+																  	<?php echo form_error('direccion'); ?>
+																</div>	
+															</div>
 															
 															<div class="row">
 																<input type="submit" id="compra_cliente" class="button large offset-by-five" value="Enviar" />
@@ -157,7 +164,10 @@
 													<div class="row"> 
 														<div class="impar_text">
 															<h5><?= $value['nombre'];?> </h5> </br> 
-															<?= $value['descripcion'];?>
+															<div class="descripcion">
+				
+																<?= str_replace("\n", "</br>", $value['descripcion']);?>
+															</div>
 														</div>
 													</div>
 													
@@ -187,11 +197,13 @@
 																</div>	
 															</div>		
 															
-															<div class="ten columns">
-																<label for="direccion">Direccion completa:</label>
-																<textarea name="direccion" id="direccion" rows="8" value="<?php echo set_value('direccion'); ?>" placeholder="Escribir toda su direccion completa calle, colonia, estado, delegacion" size="500"/></textarea>
-															  	<?php echo form_error('direccion'); ?>
-															</div>	
+															<div class = "row">
+																<div class="ten columns">
+																	<label for="direccion">Direccion completa:</label>
+																	<textarea name="direccion" id="direccion" rows="8" value="<?php echo set_value('direccion'); ?>" placeholder="Escribir toda su direccion completa calle, colonia, estado, delegacion" size="500"/></textarea>
+																  	<?php echo form_error('direccion'); ?>
+																</div>	
+															</div>
 															
 															<div class="row">
 																<input type="submit" id="compra_cliente" class="button large offset-by-five" value="Enviar" />
