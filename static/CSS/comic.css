@@ -1,6 +1,10 @@
 .color12{
 		
 	}
+.descripcion {
+	margin: 15px; 
+	text-align: left;
+}
 
 div.par_img
 {
@@ -8,12 +12,15 @@ div.par_img
   float: left;
   margin:0 25px 0 0;
 }
-div.impar_img
+
+div.impar_img 
 {
+	
   width: 200px;
   float: right;
   margin:0 0 0 25px;
 }
+
 div.par_img img
 {
   width: 200px;
