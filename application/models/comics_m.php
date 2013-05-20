@@ -76,6 +76,14 @@
 			$total=$total->num_rows();
 			return $total;
 		}		
+		
+		function obtenDatos($id){
+			$this->db->select('nombre, precio, cantidad');
+			$this->db->from('comics');
+			$this->db->where('idcomic', $id);
+			$respComic=$this->db->get();
+			return $respComic;
+		}
 	} //Fin de la clase
 
 ?>	

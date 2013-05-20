@@ -80,7 +80,11 @@
 														<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 														Precio: <?= $value['precio'];?> </br>
 														Comics en existencia: <?= $value['cantidad'];?>
-												       	<button id="toggle_par" class="button">Comprar</button>
+														<?php if ($value['cantidad']<=0){?>
+												       		<button disabled id="toggle_par" class="button">Comprar</button>
+												    	<?php }else{ ?>
+												    		<button id="toggle_par" class="button">Comprar</button>
+												    	<?php }?>
 												    </div> 
 												    
 													<div class="row">
@@ -93,15 +97,39 @@
 													</div>
 	
 											       	<div class="block_par"> 
-											       		
-											       		<?php
-
-															$idcomic=$value['idcomic'];
-															$url=base_url()."index.php/comics_c/correo/".$idcomic;
-															print_r($url);
-											       		?>  
-							
-														<form method="post" action="<?= $url ?>" accept-charset="utf-8"> 
+											       		<div class="mensaje">
+											       			<h5>
+											       				*Se hacen envios a cualquier parte de la republica, pero el precio mostrado aqui no incluye gastos de envios, 
+											       				nosotros en un correo le notificamos cual seria el costo total incluyendo los gastos de envio. </br>
+											       				**Al realizar su compra nosotros nos pondremos en contacto con usted para ponernos de acuerdo en la entrga del comic.
+											       			</h5>
+											       		</div>
+														<form method="post" action="<?=base_url(); ?>index.php/comics_c/correo" accept-charset="utf-8">
+															
+															<div class = "row">
+																<div class="five columns">
+																	<input type="hidden" id="idcomic" name="idcomic" value="<?= $value['idcomic'];?>"/>
+																</div>	
+															</div>
+															
+															<div class = "row">
+																<div class="five columns">
+																	<input type="hidden" id="precio" name="precio" value="<?= $value['precio'];?>"/>
+																</div>	
+															</div> 
+															
+															<div class = "row">
+																<div class="five columns">
+																	<input type="hidden" id="cantidad" name="cantidad" value="<?= $value['cantidad'];?>"/>
+																</div>	
+															</div>  
+															
+											 				<div class = "row">
+																<div class="five columns">
+																	<input type="hidden" id="nombre" name="nombre" value="<?= $value['nombre'];?>"/>
+																</div>	
+															</div>
+											 				
 															<div class = "row">
 																<div class="five columns">
 																	<label for="cliente">Ingrese su nombre:</label>
@@ -121,7 +149,7 @@
 															<div class = "row">
 																<div class="five columns">
 																	<label for="telefono">Ingrese su telefono:</label>
-																	<input type="text" id="telefono"  title="Telefono invalido, ejemplo 55657611 ó 5513815414" pattern="[0-9]{10}" name="telefono" value="<?php echo set_value('telefono'); ?>"/>
+																	<input type="text" id="telefono"  title="Telefono invalido, ejemplo 55657611 ó 5513815414" pattern="[0-9]{8}" name="telefono" value="<?php echo set_value('telefono'); ?>"/>
 																	<?php echo form_error('telefono'); ?>
 																</div>	
 															</div>		

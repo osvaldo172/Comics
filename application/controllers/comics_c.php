@@ -5,7 +5,7 @@ class Comics_c extends CI_Controller {
 	function __construct(){
         parent::__construct();
         $this->load->helper(array('html', 'url', 'cookie'));
-		$this->load->library(array('pagination', 'email'));
+		$this->load->library(array('pagination', 'email', 'session'));
         $this->load->model('Comics_m'); // Load the model
     }
 	
@@ -36,18 +36,22 @@ class Comics_c extends CI_Controller {
 	public function correo(){
 		// bool whether to validate email or not      
 		
-		
-       	$this->email->initialize($config);    
-		
-		$datos['direccion'] = $_POST['direccion'];
-        $this->email->from('osvaldo172@gmail.com', 'myname');
-        $this->email->to('osvaldo172@gmail.com'); 
+		$cliente = htmlentities($_POST['cliente']);
+		$nombre = htmlentities($_POST['nombre']);
+		$idcomic = htmlentities($_POST['idcomic']);
+		$precio = htmlentities($_POST['precio']);
+		$cantidad = htmlentities($_POST['cantidad']);
+		$de = htmlentities($_POST['correo']);
+		$datos['direccion'] = htmlentities($_POST['direccion'])."\n\nEl comic que se solicita es: ".$nombre."\nCon idcomic: ".$idcomic."\nEl precio del comic es: ".$precio;
+        $this->email->from($de, $cliente);
+        $this->email->reply_to($de, $cliente);
         $this->email->subject('Solicutud de compra de comic');
+        $this->email->to('osvaldo172@gmail.com'); 
 		
         $this->email->message($datos['direccion']);
-
 		if($this->email->send()){
-			//redirect(base_url().'index.php/nuevo_c');
+			print_r($idcomic);
+			print_r($de);
 		}
 		else {
 			echo $this->email->print_debugger();
