@@ -91,11 +91,16 @@
 										$aux=$i%2;
 										if ($aux==0) { ?>
 											<dd id=<?=$value['nombre']?>>
-												<div class="par_img">
-													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
-													Precio: <?= $value['precio'];?></br>
-													Comics en existencia: <?= $value['cantidad'];?> 
-													<button id="toggle_par" class="button">Comprar</button>
+												<dd id=<?=$value['nombre']?>>
+													<div class="par_img">
+														<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
+														Precio: <?= $value['precio'];?> </br>
+														Comics en existencia: <?= $value['cantidad'];?>
+														<?php if ($value['cantidad']<=0){?>
+												       		<button disabled id="toggle_par" class="button">Comprar</button>
+												    	<?php }else{ ?>
+												    		<button id="toggle_par" class="button">Comprar</button>
+												    	<?php }?>
 												    </div> 
 												    
 													<div class="row">

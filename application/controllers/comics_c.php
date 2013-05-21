@@ -46,7 +46,7 @@ class Comics_c extends CI_Controller {
         $this->email->from($de, $cliente);
         $this->email->reply_to($de, $cliente);
         $this->email->subject('Solicutud de compra de comic');
-        $this->email->to('osvaldo172@gmail.com'); 
+        $this->email->to('pedidosrawcomics@gmail.com'); 
 		
         $this->email->message($datos['direccion']);
 		if($this->email->send()){
