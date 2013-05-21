@@ -69,7 +69,7 @@
 		}
 		
 		function obtenTotalPag($cadena){
-			$this->db->select('nombre, descripcion, imagen, precio, cantidad');
+			$this->db->select('nombre, descripcion, imagen, precio, cantidad, idcomic');
 			//$this->db->from('comics');
 			$this->db->like('nombre', $cadena);
 			$total=$this->db->get('comics'); //Vaciando el resultado
@@ -83,6 +83,16 @@
 			$this->db->where('idcomic', $id);
 			$respComic=$this->db->get();
 			return $respComic;
+		}
+
+		function restaCantidad($idcomic, $cantidadNueva){
+			$data = array(
+				'cantidad' => $cantidadNueva
+			);
+						
+			$this->db->where('idcomic', $idcomic);
+			return($this->db->update('comics', $data));
+
 		}
 	} //Fin de la clase
 

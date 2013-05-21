@@ -109,7 +109,7 @@
 															
 															<div class = "row">
 																<div class="five columns">
-																	<input type="hidden" id="idcomic" name="idcomic" value="<?= $value['idcomic'];?>"/>
+																	<input type="hidden" id="idcomic" name="idcomic" value="<?= $value['idcomic']; ?>"/>
 																</div>	
 															</div>
 															
@@ -186,8 +186,11 @@
 														<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 														Precio: <?= $value['precio'];?></br>
 														Comics en existencia: <?= $value['cantidad'];?>
-													
-														<button id="toggle_impar" class="button">Comprar</button>
+														<?php if ($value['cantidad']<=0){?>
+												       		<button disabled id="toggle_impar" class="button">Comprar</button>
+												    	<?php }else{ ?>
+												    		<button id="toggle_impar" class="button">Comprar</button>
+												    	<?php }?>
 													</div>
 												      
 													<div class="row"> 

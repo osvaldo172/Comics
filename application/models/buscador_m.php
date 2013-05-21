@@ -9,7 +9,7 @@
 		}
 			
 	function busca($cadena, $per_page, $aux){
-		$this->db->select('nombre, descripcion, imagen, precio, cantidad');
+		$this->db->select('nombre, descripcion, imagen, precio, cantidad, idcomic');
 		//$this->db->from('comics');
 		$this->db->like('nombre', $cadena);
 		// $this->db->select('nombre, ideditorial'); //Haciendo la consulta

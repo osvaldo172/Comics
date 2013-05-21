@@ -44,14 +44,17 @@ class Comics_c extends CI_Controller {
 		$de = htmlentities($_POST['correo']);
 		$datos['direccion'] = htmlentities($_POST['direccion'])."\n\nEl comic que se solicita es: ".$nombre."\nCon idcomic: ".$idcomic."\nEl precio del comic es: ".$precio;
         $this->email->from($de, $cliente);
-        $this->email->reply_to($de, $cliente);
+        $this->email->reply_to($de);
         $this->email->subject('Solicutud de compra de comic');
         $this->email->to('pedidosrawcomics@gmail.com'); 
+		$this->email->message($datos['direccion']);
 		
-        $this->email->message($datos['direccion']);
+		$actualiza=$this->Comics_m->restaCantidad($idcomic, $cantidad-1);
+		
+		
 		if($this->email->send()){
-			print_r($idcomic);
-			print_r($de);
+			redirect(base_url().'index.php/comics_c', 'refresh');
+			
 		}
 		else {
 			echo $this->email->print_debugger();
