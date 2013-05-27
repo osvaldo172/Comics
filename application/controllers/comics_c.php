@@ -43,6 +43,7 @@ class Comics_c extends CI_Controller {
 		$cantidad = htmlentities($_POST['cantidad']);
 		$de = htmlentities($_POST['correo']);
 		$datos['direccion'] = htmlentities($_POST['direccion'])."\n\nEl comic que se solicita es: ".$nombre."\nCon idcomic: ".$idcomic."\nEl precio del comic es: ".$precio;
+		$this->email->initialize($config);
         $this->email->from($de, $cliente);
         $this->email->reply_to($de);
         $this->email->subject('Solicutud de compra de comic');
