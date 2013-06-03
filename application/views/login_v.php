@@ -20,9 +20,11 @@
    </head>
    
    <body><center>
+   
    		<form method="post" action="<?=base_url(); ?>index.php/login" accept-charset="utf-8">
    			<?php if(! is_null($msg) AND $msg != 'NULL')
 					echo $msg;?>	
+				<dl class="vertical tabs twelve">
 	   		<div class="login">
 	
 		   		<div class = "row">
@@ -40,8 +42,17 @@
 						<?php echo form_error('correo'); ?>
 					</div>	
 				</div>
+				
+				<div class="boton_login">
+					<div class="row"> 
+						<input type="submit" id="registrar" class="button large offset-by-one" value="Entrar" />
+					</div>
+				</div>
 	   		</div>
+	   		
+	   	</fieldset >
 	   	</from>
    		</center>
+   		
    </body>
 </html>

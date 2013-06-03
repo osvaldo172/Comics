@@ -20,6 +20,10 @@
 	margin-top:10%;
 }
 
+.boton_login{
+	margin: 0 0 0 -600px;	
+}
+
 div.par_img
 {
   width: 200px;

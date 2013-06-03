@@ -6,11 +6,12 @@ class Login extends CI_Controller {
      	parent::__construct();
      	$this->load->helper(array('html', 'url'));
 		$this->load->library('session');
-      	$this->load->model('Login_m'); // Load the model
+      	//$this->load->model('Login_m'); // Load the model
 		
     }
 
-	public function index(){
-		$this->load->view('login_v');	
+	public function index($msg = NULL){
+		$data['msg'] = $msg;
+        $this->load->view('login_v', $data);
 	}
 }
