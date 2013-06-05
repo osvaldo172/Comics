@@ -1,6 +1,6 @@
 <?php if(! defined('BASEPATH')) exit ('No direct script acces allowed');
 
-	class Comics_m extends CI_Model{
+	class Login_m extends CI_Model{
 	
 		function __construct(){
 			parent::__construct();
@@ -19,14 +19,14 @@
 			$this->db->where('password', $pass);
 			$valida=$this->db->get();
 			
-			if($query->num_rows == 1){
-			$row = $query->row();
-			$data = array(
-				'validated' => true
-				);
-			$this->session->set_userdata($data);
-			return true;
-		}
+			if($valida->num_rows == 1){
+				$row = $valida->row();
+				$data = array(
+					'validated' => true
+					);
+				$this->session->set_userdata($data);
+				return true;
+			}
 
 		return false;
 		}

@@ -21,7 +21,7 @@
    
    <body><center>
    
-   		<form method="post" action="<?=base_url(); ?>index.php/login" accept-charset="utf-8">
+   		<form method="post" action="<?=base_url(); ?>index.php/login/process" accept-charset="utf-8">
    			<?php if(! is_null($msg) AND $msg != 'NULL')
 					echo $msg;?>	
 				<dl class="vertical tabs twelve">
@@ -37,8 +37,8 @@
 																	
 				<div class = "row">
 					<div class="five columns">
-						<label for="contrasenia">Ingrese su password:</label>
-						<input type="password" id="contrasenia" name="contrasenia" required value="<?php echo set_value('contrasenia'); ?>"/>
+						<label for="password">Ingrese su password:</label>
+						<input type="password" id="password" name="password" required value="<?php echo set_value('password'); ?>"/>
 						<?php echo form_error('correo'); ?>
 					</div>	
 				</div>

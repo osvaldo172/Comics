@@ -16,14 +16,14 @@ class Login extends CI_Controller {
 	}
 	
 	function process(){
-        $result = $this->login_m->validate();// Validando al usuario         
+        $result = $this->Login_m->validarLogin();// Validando al usuario         
 		
 		if(! $result){ 
            	$msg = '<font class="error">Nombre de usuario y/o contraseña incorrectos</font><br />';
 			$this->index($msg);
 			
         }else{ //Redirecciona las páginas para cuando la sesión ha expirado
-        		redirect('<?=base_url();?>index.php/nuevo_c');
+        		redirect(base_url().'index.php/nuevo_c');
 				break;   
 		}  
     }
