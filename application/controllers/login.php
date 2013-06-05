@@ -6,7 +6,7 @@ class Login extends CI_Controller {
      	parent::__construct();
      	$this->load->helper(array('html', 'url'));
 		$this->load->library('session');
-      	//$this->load->model('Login_m'); // Load the model
+      	$this->load->model('Login_m'); // Load the model
 		
     }
 
@@ -14,4 +14,18 @@ class Login extends CI_Controller {
 		$data['msg'] = $msg;
         $this->load->view('login_v', $data);
 	}
+	
+	function process(){
+        $result = $this->login_m->validate();// Validando al usuario         
+		
+		if(! $result){ 
+           	$msg = '<font class="error">Nombre de usuario y/o contraseña incorrectos</font><br />';
+			$this->index($msg);
+			
+        }else{ //Redirecciona las páginas para cuando la sesión ha expirado
+        		redirect('<?=base_url();?>index.php/nuevo_c');
+				break;   
+		}  
+    }
+	
 }
