@@ -48,26 +48,15 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-<<<<<<< HEAD
 $db['default']['hostname'] = 'localhost';
 //$db['default']['hostname'] = 'mysql2.000webhost.com';
 $db['default']['username'] = 'root';
 //$db['default']['username'] = 'a5054040_root';
-//$db['default']['password'] = 'Brass&3a4';
+$db['default']['password'] = 'Brass&3a4';
 //$db['default']['password'] = 'osvaldo172';
 $db['default']['database'] = 'comics';
 //$db['default']['database'] = 'a5054040_comics';
-=======
-//$db['default']['hostname'] = 'localhost';
-$db['default']['hostname'] = 'mysql2.000webhost.com';
-//$db['default']['username'] = 'root';
-$db['default']['username'] = 'a5054040_root';
-//$db['default']['password'] = 'Brass&3a4';
-//$db['default']['password'] = 'osvaldo172';
-//$db['default']['database'] = 'comics';
-$db['default']['database'] = 'a5054040_comics';
->>>>>>> 36ee1ea7da1082620af76f6544ab217da2c0f0b1
-$db['default']['password'] = '207341483';
+//$db['default']['password'] = '207341483';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
