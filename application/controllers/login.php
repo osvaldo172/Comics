@@ -23,8 +23,16 @@ class Login extends CI_Controller {
 			$this->index($msg);
 			
         }else{ //Redirecciona las páginas para cuando la sesión ha expirado
-        		redirect(base_url().'index.php/nuevo_c');
-				break;   
+        $datos2['idcomic'] = htmlentities($_POST['idcomic']);
+				$datos2['nombre'] = htmlentities($_POST['nombre']); 
+        	$newdata = array(
+                   'usuario'  => htmlentities($_POST['usuario']),
+                   'password'     => htmlentities($_POST['password']),
+                   'logged_in' => TRUE
+               );
+			$this->session->set_userdata($newdata);
+       		redirect(base_url().'index.php/nuevo_c');
+			break;   
 		}  
     }
 	

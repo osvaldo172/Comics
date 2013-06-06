@@ -7,8 +7,19 @@
 			
 			$this->load->helper(array('html', 'url', 'form'));
 			$this->load->model('nuevo_m'); //Cargando mi modelo
-			$this->load->library('form_validation');
+			$this->load->library(array('form_validation', 'session'));
 			$this->form_validation->set_error_delimiters('<label class="error">', '</label>');
+			$this->load->library('session');
+        	$this->is_logged_in();
+		}
+		
+		
+        
+    	private function is_logged_in(){
+		$logged_in = $this->session->userdata('logged_in');
+		if(!isset($logged_in) or $logged_in != TRUE){
+			redirect(base_url());
+			}
 		}
 		
 		function Upload()
