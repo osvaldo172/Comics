@@ -39,7 +39,7 @@
 					<div class="five columns">
 						<label for="password">Ingrese su password:</label>
 						<input type="password" id="password" name="password" required value="<?php echo set_value('password'); ?>"/>
-						<?php echo form_error('correo'); ?>
+						<?php echo form_error('password'); ?>
 					</div>	
 				</div>
 				
