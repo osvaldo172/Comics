@@ -15,7 +15,7 @@ class Comics_c extends CI_Controller {
 		$total=$this->Comics_m->obtenTotalMarvel();
 		$config['base_url'] = base_url().'index.php/comics_c/index';
 		$config['total_rows'] = $total;
-		$config['per_page'] = 2;
+		$config['per_page'] = 3;
 		$aux2=$config['per_page'];
 		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);
