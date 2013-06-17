@@ -21,7 +21,7 @@ class Dc_c extends CI_Controller {
 		//$config['uri_segment'] = '2';
 		//$config['base_url'] ='http://localhost/Comic/index.php/comics_c/';
 		$config['total_rows'] = $total;
-		$config['per_page'] = 2;
+		$config['per_page'] = 5;
 		$aux2=$config['per_page'];
 		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);

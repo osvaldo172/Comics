@@ -13,21 +13,24 @@ class Comics_c extends CI_Controller {
 		
 		$lEditoriales=$this->Comics_m->obtenLEditoriales();
 		$total=$this->Comics_m->obtenTotalMarvel();
-		$config['base_url'] = base_url().'index.php/comics_c/index';
+		$config['base_url'] = base_url().'index.php/marvel_c/index';
 		$config['total_rows'] = $total;
 		$config['per_page'] = 3;
 		$aux2=$config['per_page'];
 		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);
-	
+		
 		$datos=Array(
-			'lEditoriales' => $lEditoriales,
-			//'lMarvel' => $lMarvel,
-			'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
-			'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux)
-			//'lBlog' => $lBlog
-
+				'lEditoriales' => $lEditoriales,
+				//'lMarvel' => $lMarvel,
+				'lDC' => $this->Comics_m->obtenLDC($aux2, $aux),
+				'lMarvel' => $this->Comics_m->obtenLMarvel($aux2, $aux)
+				//'lBlog' => $lBlog
 		 );
+
+		 
+		 
+		//print_r($datos);
 		$this->load->view('comics_v', $datos);	
 
 	}
@@ -50,10 +53,8 @@ class Comics_c extends CI_Controller {
         $this->email->to('pedidosrawcomics@gmail.com'); 
 		$this->email->message($datos['direccion']);
 		
-		$actualiza=$this->Comics_m->restaCantidad($idcomic, $cantidad-1);
-		
-		
 		if($this->email->send()){
+			$actualiza=$this->Comics_m->restaCantidad($idcomic, $cantidad-1);
 			redirect(base_url().'index.php/comics_c', 'refresh');
 			
 		}

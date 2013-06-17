@@ -72,32 +72,26 @@
 										
 										<?php $i=0;
 										foreach ($lMarvel as $value) {?>
-											<?php
-											$aux=$i%2;
-											if ($aux==0) { ?>
-												<dd id=<?=$value['nombre']?>>
-													<div class="par_img">
-														<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
-														Precio: <?= $value['precio'];?> </br>
-														Comics en existencia: <?= $value['cantidad'];?>
-														<?php if ($value['cantidad']<=0){?>
-												       		<button disabled id="toggle_par" class="button">Comprar</button>
-												    	<?php }else{ ?>
-												    		<button id="toggle_par" class="button">Comprar</button>
-												    	<?php }?>
+										<?php
+										$aux=$i%2;
+										if ($aux==0) { ?>
+											<dd id=<?=$value['nombre']?>>
+												<div class="par_img">
+													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
+													Precio: <?= $value['precio'];?></br>
+													Comics en existencia: <?= $value['cantidad'];?> 
+													<button id="toggle_par<?php ''. $i?>" class="button">Comprar</button>
 												    </div> 
 												    
 													<div class="row">
 														<div class="par_text">
 															<h5><?= $value['nombre'];?> </h5> </br> 
 														</div>
-														<div class="descripcion">
-															<?= str_replace("\n", "</br>", $value['descripcion']);?>
-														</div>
+															<?= $value['descripcion'];?>	
 													</div>
 	
 											       	<div class="block_par"> 
-											       		<div class="mensaje">
+														<div class="mensaje">
 											       				<h5>NOTA:</h5>
 											       				1.-Se hacen envios a cualquier parte de la republica, pero el precio mostrado aqui no incluye gastos de envios, 
 											       				nosotros en un correo le notificamos cual seria el costo total incluyendo los gastos de envios.</br>
@@ -109,7 +103,7 @@
 															
 															<div class = "row">
 																<div class="five columns">
-																	<input type="hidden" id="idcomic" name="idcomic" value="<?= $value['idcomic']; ?>"/>
+																	<input type="hidden" id="idcomic" name="idcomic" value="<?= $value['idcomic'];?>"/>
 																</div>	
 															</div>
 															
@@ -174,31 +168,25 @@
 														var $block1 = $('.block_par');
 														/* Toggle a sliding animation animation */
 														$('#toggle_par').on('click', function() {
-															
 														    $block1.stop().slideToggle();
 														});
 													</script>
-												</dd>	
-												
-											<?php $i++; } else { ?>
-												<dd id=<?=$value['nombre']?>>
-													<div class="impar_img"> 
+											</dd>	
+											
+										<?php $i++; } else { ?>
+											<dd id=<?=$value['nombre']?>>
+												<div class="impar_img"> 
 														<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 														Precio: <?= $value['precio'];?></br>
 														Comics en existencia: <?= $value['cantidad'];?>
-														<?php if ($value['cantidad']<=0){?>
-												       		<button disabled id="toggle_impar" class="button">Comprar</button>
-												    	<?php }else{ ?>
-												    		<button id="toggle_impar" class="button">Comprar</button>
-												    	<?php }?>
+													
+														<button id="toggle_impar" class="button">Comprar</button>
 													</div>
 												      
 													<div class="row"> 
 														<div class="impar_text">
 															<h5><?= $value['nombre'];?> </h5> </br> 
-															<div class="descripcion">
-																<?= str_replace("\n", "</br>", $value['descripcion']);?>
-															</div>
+															<?= $value['descripcion'];?>
 														</div>
 													</div>
 													
@@ -281,17 +269,15 @@
 														var $block_impar = $('.block_impar');
 														/* Toggle a sliding animation animation */
 														$('#toggle_impar').on('click', function() {
-															
 														    $block_impar.stop().slideToggle();
 														});
 													</script>	
-													
-												</dd>	
-												
-											<?php $i++; } ?>		
+											</dd>	
+											
+										<?php $i++; } ?>		
 										
-										<?php }	?>
-										<?php echo $this->pagination->create_links(); ?>
+									<?php }	?>	
+									<?php echo $this->pagination->create_links(); ?>
 									</dl>		
 				            	</li>
 
