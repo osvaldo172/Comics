@@ -80,7 +80,7 @@
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?></br>
 													Comics en existencia: <?= $value['cantidad'];?> 
-													<button id="toggle_par<?php ''. $i?>" class="button">Comprar</button>
+													<button  onclick="comprar('#compra-<?=$i;?>')"	 class="button">Comprar</button>
 												    </div> 
 												    
 													<div class="row">
@@ -90,7 +90,7 @@
 															<?= $value['descripcion'];?>	
 													</div>
 	
-											       	<div class="block_par"> 
+											       	<div class="block_par"  id="compra-<?=$i;?>"> 
 														<div class="mensaje">
 											       				<h5>NOTA:</h5>
 											       				1.-Se hacen envios a cualquier parte de la republica, pero el precio mostrado aqui no incluye gastos de envios, 
@@ -167,6 +167,9 @@
 													<script>
 														var $block1 = $('.block_par');
 														/* Toggle a sliding animation animation */
+														function comprar(id){
+															$(id).stop().slideToggle();
+														}
 														$('#toggle_par').on('click', function() {
 														    $block1.stop().slideToggle();
 														});
@@ -180,7 +183,7 @@
 														Precio: <?= $value['precio'];?></br>
 														Comics en existencia: <?= $value['cantidad'];?>
 													
-														<button id="toggle_impar" class="button">Comprar</button>
+														<button   onclick="comprar('#compra-<?=$i;?>')"	 class="button">Comprar</button>
 													</div>
 												      
 													<div class="row"> 
@@ -190,7 +193,7 @@
 														</div>
 													</div>
 													
-													 <div class="block_impar"> 
+													 <div class="block_impar" id="compra-<?=$i;?>"> 
 														<div class="mensaje">
 											       				<h5>NOTA:</h5>
 											       				1.-Se hacen envios a cualquier parte de la republica, pero el precio mostrado aqui no incluye gastos de envios, 
