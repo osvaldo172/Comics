@@ -24,7 +24,7 @@
 		$total=$this->Comics_m->obtenTotalPag($cadena);
 		$config['base_url'] = base_url().'index.php/buscador/mostrar/';
 		$config['total_rows'] = $total;
-		$config['per_page'] = 2;
+		$config['per_page'] = 5;
 		$aux2=$config['per_page'];
 		$aux=$this->uri->segment(3);
 		$this->pagination->initialize($config);

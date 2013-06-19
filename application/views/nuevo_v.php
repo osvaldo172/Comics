@@ -81,9 +81,9 @@
 												<select name="edicion_idedicion" id="edicion_idedicion">
 													<?php foreach ($edicion as $valor) {
 														$value=$valor['idedicion'];
-														$edicion=$valor['descripcion'];
+														$edicion2=$valor['descripcion'];
 														$name='edicion_idedicion' ?>
-														<option id=<?= $edicion ?> name=<?= $name?> value=<?= $value ?>> <?= $edicion ?></option>	
+														<option id=<?= $edicion2 ?> name=<?= $name?> value=<?= $value ?>> <?= $edicion2 ?></option>	
 															
 													<?php } ?>
 												</select>
@@ -191,14 +191,14 @@
 										
 										<div class="row">				  			
 											<div class="six columns">
-												<label for="edicion_idedicion" class="select">Edicion:</label>
+												<label for="edicion_idedicion" class="select">ddEdicion:</label>
 												
 												<select name="edicion_idedicion" id="edicion_idedicion">
 													<?php foreach ($edicion as $valor) {
 														$value=$valor['idedicion'];
-														$edicion=$valor['descripcion'];
+														$edicion2=$valor['descripcion'];
 														$name='edicion_idedicion' ?>
-														<option id=<?= $edicion ?> name=<?= $name?> value=<?= $value ?>> <?= $edicion ?></option>	
+														<option id=<?= $edicion2 ?> name=<?= $name?> value=<?= $value ?>> <?= $edicion2 ?></option>	
 															
 													<?php } ?>
 												</select>

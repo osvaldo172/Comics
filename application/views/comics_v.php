@@ -271,7 +271,10 @@
 													<script>
 														var $block_impar = $('.block_impar');
 														/* Toggle a sliding animation animation */
-														$('#toggle_impar').on('click', function() {
+														function comprar(id){
+															$(id).stop().slideToggle();
+														}
+														$('#toggle_par').on('click', function() {
 														    $block_impar.stop().slideToggle();
 														});
 													</script>	

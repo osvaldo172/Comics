@@ -97,7 +97,7 @@
 															<?= $value['descripcion'];?>	
 													</div>
 	
-											       	<div class="block_par"> 
+											       	<div class="block_par" id="compra-<?=$i;?>"> 
 														<div class="mensaje">
 											       				<h5>NOTA:</h5>
 											       				1.-Se hacen envios a cualquier parte de la republica, pero el precio mostrado aqui no incluye gastos de envios, 
@@ -174,6 +174,9 @@
 													<script>
 														var $block1 = $('.block_par');
 														/* Toggle a sliding animation animation */
+														function comprar(id){
+															$(id).stop().slideToggle();
+														}
 														$('#toggle_par').on('click', function() {
 														    $block1.stop().slideToggle();
 														});
@@ -201,7 +204,7 @@
 														</div>
 													</div>
 													
-													 <div class="block_impar"> 
+													 <div class="block_impar" id="compra-<?=$i;?>"> 
 														<div class="mensaje">
 											       				<h5>NOTA:</h5>
 											       				1.-Se hacen envios a cualquier parte de la republica, pero el precio mostrado aqui no incluye gastos de envios, 
@@ -279,7 +282,10 @@
 													<script>
 														var $block_impar = $('.block_impar');
 														/* Toggle a sliding animation animation */
-														$('#toggle_impar').on('click', function() {
+														function comprar(id){
+															$(id).stop().slideToggle();
+														}
+														$('#toggle_par').on('click', function() {
 														    $block_impar.stop().slideToggle();
 														});
 													</script>	

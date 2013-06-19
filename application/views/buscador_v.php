@@ -81,28 +81,21 @@
 										$aux=$i%2;
 										if ($aux==0) { ?>
 											<dd id=<?=$value['nombre']?>>
-												<dd id=<?=$value['nombre']?>>
-													<div class="par_img">
-														<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
-														Precio: <?= $value['precio'];?> </br>
-														Comics en existencia: <?= $value['cantidad'];?>
-														<?php if ($value['cantidad']<=0){?>
-												       		<button disabled id="toggle_par" class="button">Comprar</button>
-												    	<?php }else{ ?>
-												    		<button id="toggle_par" class="button">Comprar</button>
-												    	<?php }?>
+												<div class="par_img">
+													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
+													Precio: <?= $value['precio'];?></br>
+													Comics en existencia: <?= $value['cantidad'];?> 
+													<button  onclick="comprar('#compra-<?=$i;?>')"	 class="button">Comprar</button>
 												    </div> 
 												    
 													<div class="row">
 														<div class="par_text">
 															<h5><?= $value['nombre'];?> </h5> </br> 
 														</div>
-														<div class="descripcion">
-															<?= str_replace("\n", "</br>", $value['descripcion']);?>
-														</div>
+															<?= $value['descripcion'];?>	
 													</div>
 	
-											       	<div class="block_par"> 
+											       	<div class="block_par"  id="compra-<?=$i;?>"> 
 														<div class="mensaje">
 											       				<h5>NOTA:</h5>
 											       				1.-Se hacen envios a cualquier parte de la republica, pero el precio mostrado aqui no incluye gastos de envios, 
@@ -115,7 +108,7 @@
 															
 															<div class = "row">
 																<div class="five columns">
-																	<input type="hidden" id="idcomic" name="idcomic" value="<?= $value['idcomic']; ?>"/>
+																	<input type="hidden" id="idcomic" name="idcomic" value="<?= $value['idcomic'];?>"/>
 																</div>	
 															</div>
 															
@@ -179,6 +172,9 @@
 													<script>
 														var $block1 = $('.block_par');
 														/* Toggle a sliding animation animation */
+														function comprar(id){
+															$(id).stop().slideToggle();
+														}
 														$('#toggle_par').on('click', function() {
 														    $block1.stop().slideToggle();
 														});
@@ -188,26 +184,58 @@
 										<?php $i++; } else { ?>
 											<dd id=<?=$value['nombre']?>>
 												<div class="impar_img"> 
-														<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
-														Precio: <?= $value['precio'];?></br>
-														Comics en existencia: <?= $value['cantidad'];?>
-													
-														<button id="toggle_impar" class="button">Comprar</button>
-													</div>
-												      
-													<div class="row"> 
+													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
+													Precio: <?= $value['precio'];?></br>
+													Comics en existencia: <?= $value['cantidad'];?> 
+													<button  onclick="comprar('#compra-<?=$i;?>')"	 class="button">Comprar</button>
+												    </div> 
+												    
+													<div class="row">
 														<div class="impar_text">
 															<h5><?= $value['nombre'];?> </h5> </br> 
 															<?= $value['descripcion'];?>
-														</div>
+														</div>	
 													</div>
-													
-													 <div class="block_impar"> 
-														<form method="post" action="#" accept-charset="utf-8"> 
+	
+											        <div class="block_impar" id="compra-<?=$i;?>"> 
+														<div class="mensaje">
+											       				<h5>NOTA:</h5>
+											       				1.-Se hacen envios a cualquier parte de la republica, pero el precio mostrado aqui no incluye gastos de envios, 
+											       				nosotros en un correo le notificamos cual seria el costo total incluyendo los gastos de envios.</br>
+											       				2.-Al realizar su compra nosotros nos pondremos en contacto con usted para ponernos de acuerdo en la entrga del comic.</br>
+											       				3.-Se hacen entregas personales en el DF y area metropolitana.</br>	
+											       			
+											       		</div>
+														<form method="post" action="<?=base_url(); ?>index.php/comics_c/correo" accept-charset="utf-8">
+															
+															<div class = "row">
+																<div class="five columns">
+																	<input type="hidden" id="idcomic" name="idcomic" value="<?= $value['idcomic'];?>"/>
+																</div>	
+															</div>
+															
+															<div class = "row">
+																<div class="five columns">
+																	<input type="hidden" id="precio" name="precio" value="<?= $value['precio'];?>"/>
+																</div>	
+															</div> 
+															
+															<div class = "row">
+																<div class="five columns">
+																	<input type="hidden" id="cantidad" name="cantidad" value="<?= $value['cantidad'];?>"/>
+																</div>	
+															</div>  
+															
+											 				<div class = "row">
+																<div class="five columns">
+																	<input type="hidden" id="nombre" name="nombre" value="<?= $value['nombre'];?>"/>
+																</div>	
+															</div>
+											 				
 															<div class = "row">
 																<div class="five columns">
 																	<label for="cliente">Ingrese su nombre:</label>
-																	<input type="text" id="cliente" name="cliente" value="<?php echo set_value('cliente'); ?>"/>
+																	<input type="text" id="cliente" name="cliente" required value="<?php echo set_value('cliente'); ?>"/>
 																	<?php echo form_error('cliente'); ?>
 																</div>	
 															</div>
@@ -215,7 +243,7 @@
 															<div class = "row">
 																<div class="five columns">
 																	<label for="correo">Ingrese su correo:</label>
-																	<input type="text" id="correo" name="correo" value="<?php echo set_value('correo'); ?>"/>
+																	<input type="email" id="correo" title="Correo invalido" name="correo" required value="<?php echo set_value('correo'); ?>"/>
 																	<?php echo form_error('correo'); ?>
 																</div>	
 															</div>
@@ -223,16 +251,19 @@
 															<div class = "row">
 																<div class="five columns">
 																	<label for="telefono">Ingrese su telefono:</label>
-																	<input type="text" id="telefono" name="telefono" value="<?php echo set_value('telefono'); ?>"/>
+																	<input type="text" id="telefono"  title="Telefono invalido, ejemplo 55657611 ó 5513815414" pattern="[0-9]{8}" name="telefono" value="<?php echo set_value('telefono'); ?>"/>
 																	<?php echo form_error('telefono'); ?>
 																</div>	
 															</div>		
 															
-															<div class="ten columns">
-																<label for="direccion">Direccion completa:</label>
-																<textarea name="direccion" id="direccion" rows="8" value="<?php echo set_value('direccion'); ?>" placeholder="Escribir toda su direccion completa calle, colonia, estado, delegacion" size="500"/></textarea>
-															  	<?php echo form_error('direccion'); ?>
-															</div>	
+															
+															<div class = "row">
+																<div class="ten columns">
+																	<label for="direccion">Direccion completa:</label>
+																	<textarea name="direccion" id="direccion" rows="8" value="<?php echo set_value('direccion'); ?>" placeholder="Escribir toda su direccion completa calle, colonia, estado, delegacion" size="500"/></textarea>
+																  	<?php echo form_error('direccion'); ?>
+																</div>	
+															</div>
 															
 															<div class="row">
 																<input type="submit" id="compra_cliente" class="button large offset-by-five" value="Enviar" />
@@ -240,11 +271,13 @@
 															
 														</form>
 													</div>	
-												      
 													<script>
 														var $block_impar = $('.block_impar');
 														/* Toggle a sliding animation animation */
-														$('#toggle_impar').on('click', function() {
+														function comprar(id){
+															$(id).stop().slideToggle();
+														}
+														$('#toggle_par').on('click', function() {
 														    $block_impar.stop().slideToggle();
 														});
 													</script>	
