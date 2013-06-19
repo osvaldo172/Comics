@@ -23,7 +23,7 @@
    <body>
    		<div class="header">
    			</br>
-			<h4>COMICSCRIPT</h4>
+			<h4>RAWCOMICS</h4>
 			</br>
 			<div class="row">
 				<span><?php echo validation_errors(); ?></span>
@@ -42,7 +42,7 @@
 		</div><!--Aquí termina header-->
 		<div class="color12"> <!--Aquí iran las images-->
 
-	   		<title>Comicscript</title>
+	   		<title>RAWCOMICS</title>
 	   		</br>
 	
 	   		<div class="row">
@@ -80,7 +80,12 @@
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?></br>
 													Comics en existencia: <?= $value['cantidad'];?> 
-													<button  onclick="comprar('#compra-<?=$i;?>')"	 class="button">Comprar</button>
+													
+													<?php if ($value['cantidad']<=0){?>
+												       		<button disabled id="toggle_par" class="button">Comprar</button>
+												    	<?php }else{ ?>
+												    		<button id="toggle_par" class="button">Comprar</button>
+												    	<?php }?>
 												    </div> 
 												    
 													<div class="row">
@@ -183,8 +188,12 @@
 														Precio: <?= $value['precio'];?></br>
 														Comics en existencia: <?= $value['cantidad'];?>
 													
-														<button   onclick="comprar('#compra-<?=$i;?>')"	 class="button">Comprar</button>
-													</div>
+														<?php if ($value['cantidad']<=0){?>
+												       		<button disabled id="toggle_par" class="button">Comprar</button>
+												    	<?php }else{ ?>
+												    		<button id="toggle_par" class="button">Comprar</button>
+												    	<?php }?>
+												    </div> 
 												      
 													<div class="row"> 
 														<div class="impar_text">
