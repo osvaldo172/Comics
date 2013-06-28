@@ -80,11 +80,10 @@
 													<img src="<?=base_url(); ?>static/img/<?= $value['imagen'];?>"><br>
 													Precio: <?= $value['precio'];?></br>
 													Comics en existencia: <?= $value['cantidad'];?> 
-													
 													<?php if ($value['cantidad']<=0){?>
 												       		<button disabled id="toggle_par" class="button">Comprar</button>
 												    	<?php }else{ ?>
-												    		<button id="toggle_par" class="button">Comprar</button>
+												    		<button onclick="comprar('#compra-<?=$i;?>')" class="button">Comprar</button>
 												    	<?php }?>
 												    </div> 
 												    
@@ -174,9 +173,11 @@
 														/* Toggle a sliding animation animation */
 														function comprar(id){
 															$(id).stop().slideToggle();
+															
 														}
 														$('#toggle_par').on('click', function() {
 														    $block1.stop().slideToggle();
+														    
 														});
 													</script>
 											</dd>	
@@ -191,7 +192,7 @@
 														<?php if ($value['cantidad']<=0){?>
 												       		<button disabled id="toggle_par" class="button">Comprar</button>
 												    	<?php }else{ ?>
-												    		<button id="toggle_par" class="button">Comprar</button>
+												    		<button onclick="comprar('#compra-<?=$i;?>')" class="button">Comprar</button>
 												    	<?php }?>
 												    </div> 
 												      
