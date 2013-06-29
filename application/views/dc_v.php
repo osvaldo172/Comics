@@ -176,9 +176,11 @@
 														/* Toggle a sliding animation animation */
 														function comprar(id){
 															$(id).stop().slideToggle();
+															
 														}
 														$('#toggle_par').on('click', function() {
 														    $block1.stop().slideToggle();
+														    
 														});
 													</script>
 											</dd>	
@@ -284,9 +286,11 @@
 														/* Toggle a sliding animation animation */
 														function comprar(id){
 															$(id).stop().slideToggle();
+															$block_impar.stop().slideToggle();
 														}
 														$('#toggle_par').on('click', function() {
 														    $block_impar.stop().slideToggle();
+														    $(id).stop().slideToggle();
 														});
 													</script>	
 											</dd>	
