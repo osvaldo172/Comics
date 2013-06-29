@@ -86,7 +86,7 @@
 													<?php if ($value['cantidad']<=0){?>
 												       		<button disabled id="toggle_par" class="button">Comprar</button>
 												    	<?php }else{ ?>
-												    		<button id="toggle_par" class="button">Comprar</button>
+												    		<button onclick="comprar('#compra-<?=$i;?>')" class="button">Comprar</button>
 												    	<?php }?>
 												    </div> 
 												    
@@ -195,7 +195,7 @@
 														<?php if ($value['cantidad']<=0){?>
 												       		<button disabled id="toggle_impar" class="button">Comprar</button>
 												    	<?php }else{ ?>
-												    		<button id="toggle_impar" class="button">Comprar</button>
+												    		<button onclick="comprar('#compra-<?=$i;?>')" class="button">Comprar</button>
 												    	<?php }?>
 													</div>
 												      
@@ -286,11 +286,9 @@
 														/* Toggle a sliding animation animation */
 														function comprar(id){
 															$(id).stop().slideToggle();
-															$block_impar.stop().slideToggle();
 														}
 														$('#toggle_par').on('click', function() {
 														    $block_impar.stop().slideToggle();
-														    $(id).stop().slideToggle();
 														});
 													</script>	
 											</dd>	
